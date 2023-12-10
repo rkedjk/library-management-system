@@ -3,26 +3,26 @@ package org.rsreu.library.databaseutil;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-class OracleDBDAOFactory {
+import java.util.ResourceBundle;
 
-    public static void main(String[] args) {
-        // Замените параметры подключения своими данными
-        String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:XE";
-        String username = "C##denis";
-        String password = "Admin1234";
+public class OracleConnectionManager {
+    private static final String CONFIG_FILE = "database"; // Название файла ресурсов без расширения
+
+    public static Connection getConnection() {
+        ResourceBundle resourceBundle = ResourceBundle.getBundle(CONFIG_FILE);
+
+        String jdbcUrl = resourceBundle.getString("jdbc.url");
+        String username = resourceBundle.getString("db.username");
+        String password = resourceBundle.getString("db.password");
 
         Connection connection = null;
 
         try {
-            // Загружаем драйвер JDBC для Oracle
             Class.forName("oracle.jdbc.driver.OracleDriver");
-
-            // Устанавливаем соединение
             connection = DriverManager.getConnection(jdbcUrl, username, password);
 
             if (connection != null) {
                 System.out.println("Успешное соединение с базой данных Oracle!");
-                // Дальнейшие операции с базой данных могут быть выполнены здесь
             } else {
                 System.out.println("Не удалось установить соединение с базой данных Oracle.");
             }
@@ -32,16 +32,19 @@ class OracleDBDAOFactory {
         } catch (SQLException e) {
             System.out.println("Ошибка при установлении соединения с базой данных Oracle.");
             e.printStackTrace();
-        } finally {
-            // Закрываем соединение в блоке finally, чтобы гарантировать его закрытие даже в случае исключения
+        }
+
+        return connection;
+    }
+
+    public static void closeConnection(Connection connection) {
+        if (connection != null) {
             try {
-                if (connection != null) {
-                    connection.close();
-                }
+                connection.close();
+                System.out.println("Соединение с базой данных Oracle закрыто.");
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
     }
 }
-
