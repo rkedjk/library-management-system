@@ -1,13 +1,10 @@
 package org.rsreu.library.command.client;
 
-import org.rsreu.library.command.ActionCommand;
-import org.rsreu.library.command.LoginCommand;
-import org.rsreu.library.command.LogoutCommand;
-
+import org.rsreu.library.command.*;
 public enum CommandEnum {
     LOGIN(new LoginCommand()),
-    LOGOUT(new LogoutCommand());
-
+    LOGOUT(new LogoutCommand()),
+    USERDASHBOARD(new UserDashboardCommand());
     private final ActionCommand command;
 
     CommandEnum(ActionCommand command) {

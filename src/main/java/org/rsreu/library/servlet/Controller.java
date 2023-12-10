@@ -30,7 +30,7 @@ public class Controller extends HttpServlet {
         String page = null;
         // определение команды, пришедшей из JSP
         ActionFactory client = new ActionFactory();
-        ActionCommand command = client.defineCommand(request);
+        ActionCommand command = ActionFactory.defineCommand(request);
         /*
          * вызов реализованного метода execute() и передача параметров
          * классу-обработчику конкретной команды

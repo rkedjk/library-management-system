@@ -16,7 +16,7 @@
 
 <nav>
     <div class="container">
-        <a href="index.jsp">Home</a>
+        <a href="dashboard.jsp">Home</a>
         <a href="addBook.jsp">Add New Book</a>
         <!-- Add more navigation links as needed -->
     </div>

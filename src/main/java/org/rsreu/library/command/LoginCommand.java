@@ -25,13 +25,13 @@ public class LoginCommand implements ActionCommand {
             // Determining the path based on user type from LoginLogic
             switch (userType) {
                 case ADMIN:
-                    page = ConfigurationManager.getProperty("path.page.admin");
+                    page = ConfigurationManager.getProperty("path.page.admin_dashboard");
                     break;
                 case LIBRARIAN:
-                    page = ConfigurationManager.getProperty("path.page.librarian");
+                    page = ConfigurationManager.getProperty("path.page.librarian_dashboard");
                     break;
                 case USER:
-                    page = ConfigurationManager.getProperty("path.page.user");
+                    page = ConfigurationManager.getProperty("path.page.user_dashboard");
                     break;
                 // Handle additional user types if needed
                 default:
