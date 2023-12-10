@@ -1,20 +1,22 @@
 package org.rsreu.library.databaseutil.entities;
 
+import javax.naming.Name;
+
 public class Account {
     private int id;
     private String type;
     private String login;
     private String password;
-    private Integer internalId;
     private String status;
 
-    public Account(int id, String type, String login, String password, Integer internalId, String status) {
+    private String name;
+    public Account(int id, String type, String login, String password, String status,String name) {
         this.id = id;
         this.type = type;
         this.login = login;
         this.password = password;
-        this.internalId = internalId;
         this.status = status;
+        this.name = name;
     }
 
     public int getId() {
@@ -49,19 +51,18 @@ public class Account {
         this.password = password;
     }
 
-    public Integer getInternalId() {
-        return internalId;
-    }
-
-    public void setInternalId(Integer internalId) {
-        this.internalId = internalId;
-    }
-
     public String getStatus() {
         return status;
     }
 
     public void setStatus(String status) {
         this.status = status;
+    }
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
