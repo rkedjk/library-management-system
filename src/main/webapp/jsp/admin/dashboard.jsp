@@ -39,6 +39,14 @@
         </div>
     </form>
 
+    <form name="changeUserStatusForm" method="post" action="controller">
+        <div class="form-group col-md-3 offset-md-4 m-auto">
+            <input type="hidden" name="command" value="admindashboard"/>
+            <button type="submit" name="action" value="userlist" class="btn btn-success">User LIst</button><br>
+        </div>
+    </form>
+
+
     <button onclick="goBack()" class="btn btn-danger">Return to Previous Page</button>
 
     <script>

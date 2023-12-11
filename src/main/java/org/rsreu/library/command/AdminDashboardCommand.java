@@ -27,6 +27,8 @@ public class AdminDashboardCommand implements ActionCommand {
                 case "changestatus":
                     page = ConfigurationManager.getProperty("path.page.change_status");
                     break;
+                case "userlist" :
+                    page = ConfigurationManager.getProperty("path.page.userlist");
                 default:
                     // Handle other cases or leave it blank if not needed
                     break;
