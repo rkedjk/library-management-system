@@ -2,7 +2,10 @@
 package org.rsreu.library.command;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.rsreu.library.resource.ConfigurationManager;
+
+import java.io.IOException;
 
 public class LogoutCommand implements ActionCommand {
     @Override

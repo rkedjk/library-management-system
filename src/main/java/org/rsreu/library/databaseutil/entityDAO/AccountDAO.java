@@ -13,6 +13,30 @@ public class AccountDAO {
         this.connection = connection;
     }
 
+    public Account getUserByCredentials(String login, String password) throws SQLException {
+        final Resourcer RESOURCER = ProjectResourcer.getInstance();
+        String query = RESOURCER.getString("accounts.query.get_user_by_credentials");
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, login);
+            preparedStatement.setString(2, password);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    return new Account(
+                            resultSet.getInt(RESOURCER.getString("accounts.id")),
+                            resultSet.getString(RESOURCER.getString("accounts.type")),
+                            resultSet.getString(RESOURCER.getString("accounts.login")),
+                            resultSet.getString(RESOURCER.getString("accounts.password")),
+                            resultSet.getString(RESOURCER.getString("accounts.status")),
+                            resultSet.getString(RESOURCER.getString("accounts.name"))
+                    );
+                }
+            }
+        }
+        return null;
+    }
+
     public List<Account> getAllUsers() throws SQLException {
         final Resourcer RESOURCER = ProjectResourcer.getInstance();
         String query = RESOURCER.getString("accounts.query.get_all_users");

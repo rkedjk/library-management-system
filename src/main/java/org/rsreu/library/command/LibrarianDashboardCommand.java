@@ -1,12 +1,15 @@
 package org.rsreu.library.command;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.rsreu.library.resource.ConfigurationManager;
+
+import java.io.IOException;
 
 public class LibrarianDashboardCommand implements ActionCommand {
 
     @Override
-    public String execute(HttpServletRequest request) {
+    public String execute(HttpServletRequest request){
         String page = null;
         String action = request.getParameter("action");
 
@@ -26,6 +29,10 @@ public class LibrarianDashboardCommand implements ActionCommand {
                     break;
                 case "manage_orders":
                     page = ConfigurationManager.getProperty("path.page.manage_orders");
+                    // Logic to handle managing orders
+                    break;
+                case "search_books_l":
+                    page = ConfigurationManager.getProperty("path.page.search_books_l");
                     // Logic to handle managing orders
                     break;
                 default:

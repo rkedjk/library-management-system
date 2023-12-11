@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="admin/style.css">
 </head>
 <body>
@@ -14,37 +14,38 @@
     <form name="manageUsersForm" method="post" action="controller">
         <div class="form-group col-md-3 offset-md-4 m-auto">
             <input type="hidden" name="command" value="admindashboard"/>
-            <button type="submit" name="action" value="add_user" class="btn btn-success">Add User</button><br>
+            <button type="submit" name="action" value="searchuser" class="btn btn-success">Search Users</button><br>
         </div>
     </form>
 
     <form name="removeUserForm" method="post" action="controller">
         <div class="form-group col-md-3 offset-md-4 m-auto">
             <input type="hidden" name="command" value="admindashboard"/>
-            <button type="submit" name="action" value="remove_user" class="btn btn-success">Remove User</button><br>
+            <button type="submit" name="action" value="deleteuser" class="btn btn-success">Remove User</button><br>
         </div>
     </form>
 
-    <form name="manageBooksForm" method="post" action="controller">
+    <form name="addUserForm" method="post" action="controller">
         <div class="form-group col-md-3 offset-md-4 m-auto">
             <input type="hidden" name="command" value="admindashboard"/>
-            <button type="submit" name="action" value="add_new_book" class="btn btn-success">Add New Book</button><br>
+            <button type="submit" name="action" value="adduser" class="btn btn-success">Add User</button><br>
         </div>
     </form>
 
-    <form name="removeBookForm" method="post" action="controller">
+    <form name="changeUserStatusForm" method="post" action="controller">
         <div class="form-group col-md-3 offset-md-4 m-auto">
             <input type="hidden" name="command" value="admindashboard"/>
-            <button type="submit" name="action" value="remove_book" class="btn btn-success">Remove Book</button><br>
+            <button type="submit" name="action" value="changestatus" class="btn btn-success">Change User Status</button><br>
         </div>
     </form>
 
-    <form name="updateBookInfoForm" method="post" action="controller">
-        <div class="form-group col-md-3 offset-md-4 m-auto">
-            <input type="hidden" name="command" value="admindashboard"/>
-            <button type="submit" name="action" value="update_book_info" class="btn btn-success">Update Book Info</button><br>
-        </div>
-    </form>
+    <button onclick="goBack()" class="btn btn-danger">Return to Previous Page</button>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 </div>
 
 <%@ include file="../footer.jsp" %>

@@ -1,6 +1,5 @@
 package org.rsreu.library.databaseutil.entities;
 
-import javax.naming.Name;
 
 public class Account {
     private int id;

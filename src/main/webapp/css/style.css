@@ -16,6 +16,7 @@ body {
     width: 80%;
     margin: auto;
     overflow: hidden;
+    text-align: center;
 }
 
 /* Header styles */
@@ -58,4 +59,40 @@ footer {
     padding: 10px 0;
     background: #333;
     color: #fff;
+}
+
+h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-success {
+    background-color: #28a745;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+.btn:active {
+    transform: translateY(1px);
 }

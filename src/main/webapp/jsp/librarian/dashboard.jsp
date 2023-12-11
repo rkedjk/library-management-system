@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Librarian Dashboard</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="librarian/style.css">
 </head>
 <body>
@@ -28,7 +28,7 @@
     <form name="searchBooksForm" method="post" action="controller">
         <div class="form-group col-md-3 offset-md-4 m-auto">
             <input type="hidden" name="command" value="librariandashboard"/>
-            <button type="submit" name="action" value="search_books" class="btn btn-success">Search Books</button><br>
+            <button type="submit" name="action" value="search_books_l" class="btn btn-success">Search Books</button><br>
         </div>
     </form>
 
@@ -38,6 +38,13 @@
             <button type="submit" name="action" value="manage_orders" class="btn btn-success">Manage Orders</button><br>
         </div>
     </form>
+    <button onclick="goBack()" class="btn btn-danger">Return to Previous Page</button>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 </div>
 
 <%@ include file="../footer.jsp" %>
