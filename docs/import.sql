@@ -1,5 +1,5 @@
 --------------------------------------------------------
---  File created - РІС‚РѕСЂРЅРёРє-РґРµРєР°Р±СЂСЏ-12-2023   
+--  File created - вторник-декабря-12-2023   
 --------------------------------------------------------
 --------------------------------------------------------
 --  DDL for Sequence BOOK_CATALOG_SEQ
@@ -39,12 +39,16 @@
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS" ;
+  GRANT DELETE ON "C##DENIS"."AUTHORS" TO "C##SERVLET";
+  GRANT INSERT ON "C##DENIS"."AUTHORS" TO "C##SERVLET";
+  GRANT SELECT ON "C##DENIS"."AUTHORS" TO "C##SERVLET";
+  GRANT UPDATE ON "C##DENIS"."AUTHORS" TO "C##SERVLET";
 --------------------------------------------------------
 --  DDL for Table BOOK_CATALOG
 --------------------------------------------------------
 
   CREATE TABLE "C##DENIS"."BOOK_CATALOG" 
-   (	"BOOK_ID" NUMBER, 
+   (	"BOOK_ID" NUMBER DEFAULT "C##DENIS"."BOOK_CATALOG_SEQ"."NEXTVAL", 
 	"TITLE" VARCHAR2(255 BYTE), 
 	"YEAR_PUBLISHED" NUMBER, 
 	"AUTHOR_NAME" VARCHAR2(255 BYTE), 
@@ -57,6 +61,10 @@
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS" ;
+  GRANT DELETE ON "C##DENIS"."BOOK_CATALOG" TO "C##SERVLET";
+  GRANT INSERT ON "C##DENIS"."BOOK_CATALOG" TO "C##SERVLET";
+  GRANT SELECT ON "C##DENIS"."BOOK_CATALOG" TO "C##SERVLET";
+  GRANT UPDATE ON "C##DENIS"."BOOK_CATALOG" TO "C##SERVLET";
 --------------------------------------------------------
 --  DDL for Table BOOK_INVENTORY
 --------------------------------------------------------
@@ -73,6 +81,10 @@
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS" ;
+  GRANT DELETE ON "C##DENIS"."BOOK_INVENTORY" TO "C##SERVLET";
+  GRANT INSERT ON "C##DENIS"."BOOK_INVENTORY" TO "C##SERVLET";
+  GRANT SELECT ON "C##DENIS"."BOOK_INVENTORY" TO "C##SERVLET";
+  GRANT UPDATE ON "C##DENIS"."BOOK_INVENTORY" TO "C##SERVLET";
 --------------------------------------------------------
 --  DDL for Table GENRES
 --------------------------------------------------------
@@ -86,6 +98,10 @@
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS" ;
+  GRANT DELETE ON "C##DENIS"."GENRES" TO "C##SERVLET";
+  GRANT INSERT ON "C##DENIS"."GENRES" TO "C##SERVLET";
+  GRANT SELECT ON "C##DENIS"."GENRES" TO "C##SERVLET";
+  GRANT UPDATE ON "C##DENIS"."GENRES" TO "C##SERVLET";
 --------------------------------------------------------
 --  DDL for Table LOANS
 --------------------------------------------------------
@@ -97,8 +113,7 @@
 	"LOAN_DATE" DATE, 
 	"DUE_DATE" DATE, 
 	"RETURN_DATE" DATE, 
-	"STATUS" VARCHAR2(20 BYTE), 
-	"LIBRARIAN_ID" NUMBER
+	"STATUS" VARCHAR2(20 BYTE)
    ) SEGMENT CREATION IMMEDIATE 
   PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
  NOCOMPRESS LOGGING
@@ -106,6 +121,10 @@
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS" ;
+  GRANT DELETE ON "C##DENIS"."LOANS" TO "C##SERVLET";
+  GRANT INSERT ON "C##DENIS"."LOANS" TO "C##SERVLET";
+  GRANT SELECT ON "C##DENIS"."LOANS" TO "C##SERVLET";
+  GRANT UPDATE ON "C##DENIS"."LOANS" TO "C##SERVLET";
 --------------------------------------------------------
 --  DDL for Table PENALTIES
 --------------------------------------------------------
@@ -116,7 +135,8 @@
 	"VALIDITY" NUMBER, 
 	"REASON" VARCHAR2(255 BYTE), 
 	"PENALTY_DATE" DATE, 
-	"EXPIRATION_DATE" DATE
+	"EXPIRATION_DATE" DATE, 
+	"LIBRARIAN_ID" NUMBER
    ) SEGMENT CREATION IMMEDIATE 
   PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
  NOCOMPRESS LOGGING
@@ -124,6 +144,10 @@
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS" ;
+  GRANT DELETE ON "C##DENIS"."PENALTIES" TO "C##SERVLET";
+  GRANT INSERT ON "C##DENIS"."PENALTIES" TO "C##SERVLET";
+  GRANT SELECT ON "C##DENIS"."PENALTIES" TO "C##SERVLET";
+  GRANT UPDATE ON "C##DENIS"."PENALTIES" TO "C##SERVLET";
 --------------------------------------------------------
 --  DDL for Table PUBLISHERS
 --------------------------------------------------------
@@ -137,6 +161,10 @@
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS" ;
+  GRANT DELETE ON "C##DENIS"."PUBLISHERS" TO "C##SERVLET";
+  GRANT INSERT ON "C##DENIS"."PUBLISHERS" TO "C##SERVLET";
+  GRANT SELECT ON "C##DENIS"."PUBLISHERS" TO "C##SERVLET";
+  GRANT UPDATE ON "C##DENIS"."PUBLISHERS" TO "C##SERVLET";
 --------------------------------------------------------
 --  DDL for Table USERS
 --------------------------------------------------------
@@ -155,105 +183,109 @@
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS" ;
+  GRANT DELETE ON "C##DENIS"."USERS" TO "C##SERVLET";
+  GRANT INSERT ON "C##DENIS"."USERS" TO "C##SERVLET";
+  GRANT SELECT ON "C##DENIS"."USERS" TO "C##SERVLET";
+  GRANT UPDATE ON "C##DENIS"."USERS" TO "C##SERVLET";
 REM INSERTING into C##DENIS.AUTHORS
 SET DEFINE OFF;
-Insert into C##DENIS.AUTHORS (AUTHOR_NAME) values ('РђРіР°С‚Р° РљСЂРёСЃС‚Рё');
-Insert into C##DENIS.AUTHORS (AUTHOR_NAME) values ('РђР»РµРєСЃР°РЅРґСЂ РџСѓС€РєРёРЅ');
-Insert into C##DENIS.AUTHORS (AUTHOR_NAME) values ('Р“Р°Р±СЂРёСЌР»СЊ Р“Р°СЂСЃРёР° РњР°СЂРєРµСЃ');
-Insert into C##DENIS.AUTHORS (AUTHOR_NAME) values ('Р”Р¶РµР№РЅ РћСЃС‚РёРЅ');
-Insert into C##DENIS.AUTHORS (AUTHOR_NAME) values ('Р”Р¶РѕСЂРґР¶ РћСЂСѓСЌР»Р»');
-Insert into C##DENIS.AUTHORS (AUTHOR_NAME) values ('РРІР°РЅ РўСѓСЂРіРµРЅРµРІ');
-Insert into C##DENIS.AUTHORS (AUTHOR_NAME) values ('Р›РµРІ РўРѕР»СЃС‚РѕР№');
-Insert into C##DENIS.AUTHORS (AUTHOR_NAME) values ('РњР°СЂРіР°СЂРµС‚ РњРёС‚С‡РµР»Р»');
-Insert into C##DENIS.AUTHORS (AUTHOR_NAME) values ('Р¤РµРґРѕСЂ Р”РѕСЃС‚РѕРµРІСЃРєРёР№');
-Insert into C##DENIS.AUTHORS (AUTHOR_NAME) values ('Р­СЂРёС… РњР°СЂРёСЏ Р РµРјР°СЂРє');
+Insert into C##DENIS.AUTHORS (AUTHOR_NAME) values ('Агата Кристи');
+Insert into C##DENIS.AUTHORS (AUTHOR_NAME) values ('Александр Пушкин');
+Insert into C##DENIS.AUTHORS (AUTHOR_NAME) values ('Габриэль Гарсиа Маркес');
+Insert into C##DENIS.AUTHORS (AUTHOR_NAME) values ('Джейн Остин');
+Insert into C##DENIS.AUTHORS (AUTHOR_NAME) values ('Джордж Оруэлл');
+Insert into C##DENIS.AUTHORS (AUTHOR_NAME) values ('Иван Тургенев');
+Insert into C##DENIS.AUTHORS (AUTHOR_NAME) values ('Лев Толстой');
+Insert into C##DENIS.AUTHORS (AUTHOR_NAME) values ('Маргарет Митчелл');
+Insert into C##DENIS.AUTHORS (AUTHOR_NAME) values ('Федор Достоевский');
+Insert into C##DENIS.AUTHORS (AUTHOR_NAME) values ('Эрих Мария Ремарк');
 REM INSERTING into C##DENIS.BOOK_CATALOG
 SET DEFINE OFF;
-Insert into C##DENIS.BOOK_CATALOG (BOOK_ID,TITLE,YEAR_PUBLISHED,AUTHOR_NAME,GENRE_NAME,PUBLISHER_NAME) values ('1','Р•РІРіРµРЅРёР№ РћРЅРµРіРёРЅ','1833','РђР»РµРєСЃР°РЅРґСЂ РџСѓС€РєРёРЅ','Р РѕРјР°РЅ','РР·РґР°С‚РµР»СЊСЃС‚РІРѕ РђРЎРў');
-Insert into C##DENIS.BOOK_CATALOG (BOOK_ID,TITLE,YEAR_PUBLISHED,AUTHOR_NAME,GENRE_NAME,PUBLISHER_NAME) values ('2','Р’РѕР№РЅР° Рё РјРёСЂ','1869','Р›РµРІ РўРѕР»СЃС‚РѕР№','РСЃС‚РѕСЂРёС‡РµСЃРєРёР№ СЂРѕРјР°РЅ','Р­РєСЃРјРѕ');
-Insert into C##DENIS.BOOK_CATALOG (BOOK_ID,TITLE,YEAR_PUBLISHED,AUTHOR_NAME,GENRE_NAME,PUBLISHER_NAME) values ('3','РџСЂРµСЃС‚СѓРїР»РµРЅРёРµ Рё РЅР°РєР°Р·Р°РЅРёРµ','1866','Р¤РµРґРѕСЂ Р”РѕСЃС‚РѕРµРІСЃРєРёР№','Р”РµС‚РµРєС‚РёРІ','ACT');
-Insert into C##DENIS.BOOK_CATALOG (BOOK_ID,TITLE,YEAR_PUBLISHED,AUTHOR_NAME,GENRE_NAME,PUBLISHER_NAME) values ('5','1984','1949','Р”Р¶РѕСЂРґР¶ РћСЂСѓСЌР»Р»','РќР°СѓС‡РЅР°СЏ Р»РёС‚РµСЂР°С‚СѓСЂР°','РњР°РЅРЅ, РРІР°РЅРѕРІ Рё Р¤РµСЂР±РµСЂ');
-Insert into C##DENIS.BOOK_CATALOG (BOOK_ID,TITLE,YEAR_PUBLISHED,AUTHOR_NAME,GENRE_NAME,PUBLISHER_NAME) values ('6','Р“РѕСЂРґРѕСЃС‚СЊ Рё РїСЂРµРґСѓР±РµР¶РґРµРЅРёРµ','1813','Р”Р¶РµР№РЅ РћСЃС‚РёРЅ','Р РѕРјР°РЅ','РџРѕРїСѓСЂСЂРё');
-Insert into C##DENIS.BOOK_CATALOG (BOOK_ID,TITLE,YEAR_PUBLISHED,AUTHOR_NAME,GENRE_NAME,PUBLISHER_NAME) values ('9','РђРЅРЅР° РљР°СЂРµРЅРёРЅР°','1877','Р›РµРІ РўРѕР»СЃС‚РѕР№','Р РѕРјР°РЅ','РњРѕСЃРєРѕРІСЃРєРёР№ СЂР°Р±РѕС‡РёР№');
+Insert into C##DENIS.BOOK_CATALOG (BOOK_ID,TITLE,YEAR_PUBLISHED,AUTHOR_NAME,GENRE_NAME,PUBLISHER_NAME) values ('1','Евгений Онегин','1833','Александр Пушкин','Роман','Издательство АСТ');
+Insert into C##DENIS.BOOK_CATALOG (BOOK_ID,TITLE,YEAR_PUBLISHED,AUTHOR_NAME,GENRE_NAME,PUBLISHER_NAME) values ('2','Война и мир','1869','Лев Толстой','Исторический роман','Эксмо');
+Insert into C##DENIS.BOOK_CATALOG (BOOK_ID,TITLE,YEAR_PUBLISHED,AUTHOR_NAME,GENRE_NAME,PUBLISHER_NAME) values ('3','Преступление и наказание','1866','Федор Достоевский','Детектив','ACT');
+Insert into C##DENIS.BOOK_CATALOG (BOOK_ID,TITLE,YEAR_PUBLISHED,AUTHOR_NAME,GENRE_NAME,PUBLISHER_NAME) values ('5','1984','1949','Джордж Оруэлл','Научная литература','Манн, Иванов и Фербер');
+Insert into C##DENIS.BOOK_CATALOG (BOOK_ID,TITLE,YEAR_PUBLISHED,AUTHOR_NAME,GENRE_NAME,PUBLISHER_NAME) values ('6','Гордость и предубеждение','1813','Джейн Остин','Роман','Попурри');
+Insert into C##DENIS.BOOK_CATALOG (BOOK_ID,TITLE,YEAR_PUBLISHED,AUTHOR_NAME,GENRE_NAME,PUBLISHER_NAME) values ('9','Анна Каренина','1877','Лев Толстой','Роман','Московский рабочий');
 REM INSERTING into C##DENIS.BOOK_INVENTORY
 SET DEFINE OFF;
-Insert into C##DENIS.BOOK_INVENTORY (INVENTORY_ID,BOOK_ID,LOCATION,STATUS) values ('1','1','РЎС‚РµР»Р»Р°Р¶ Рђ','AVAILABLE');
-Insert into C##DENIS.BOOK_INVENTORY (INVENTORY_ID,BOOK_ID,LOCATION,STATUS) values ('2','2','РЎС‚РµР»Р»Р°Р¶ Р‘','AVAILABLE');
-Insert into C##DENIS.BOOK_INVENTORY (INVENTORY_ID,BOOK_ID,LOCATION,STATUS) values ('3','3','РЎС‚РµР»Р»Р°Р¶ Р’','ON_REPAIR');
-Insert into C##DENIS.BOOK_INVENTORY (INVENTORY_ID,BOOK_ID,LOCATION,STATUS) values ('5','5','РЎС‚РµР»Р»Р°Р¶ Р”','AVAILABLE');
-Insert into C##DENIS.BOOK_INVENTORY (INVENTORY_ID,BOOK_ID,LOCATION,STATUS) values ('6','6','РЎС‚РµР»Р»Р°Р¶ Р•','LOST');
-Insert into C##DENIS.BOOK_INVENTORY (INVENTORY_ID,BOOK_ID,LOCATION,STATUS) values ('9','9','РЎС‚РµР»Р»Р°Р¶ Р','AVAILABLE');
-Insert into C##DENIS.BOOK_INVENTORY (INVENTORY_ID,BOOK_ID,LOCATION,STATUS) values ('11','1','РЎС‚РµР»Р»Р°Р¶ Рђ','AVAILABLE');
-Insert into C##DENIS.BOOK_INVENTORY (INVENTORY_ID,BOOK_ID,LOCATION,STATUS) values ('12','2','РЎС‚РµР»Р»Р°Р¶ Р‘','AVAILABLE');
-Insert into C##DENIS.BOOK_INVENTORY (INVENTORY_ID,BOOK_ID,LOCATION,STATUS) values ('13','3','РЎС‚РµР»Р»Р°Р¶ Р’','ON_REPAIR');
-Insert into C##DENIS.BOOK_INVENTORY (INVENTORY_ID,BOOK_ID,LOCATION,STATUS) values ('15','5','РЎС‚РµР»Р»Р°Р¶ Р”','AVAILABLE');
-Insert into C##DENIS.BOOK_INVENTORY (INVENTORY_ID,BOOK_ID,LOCATION,STATUS) values ('16','6','РЎС‚РµР»Р»Р°Р¶ Р•','LOST');
-Insert into C##DENIS.BOOK_INVENTORY (INVENTORY_ID,BOOK_ID,LOCATION,STATUS) values ('19','9','РЎС‚РµР»Р»Р°Р¶ Р','AVAILABLE');
+Insert into C##DENIS.BOOK_INVENTORY (INVENTORY_ID,BOOK_ID,LOCATION,STATUS) values ('1','1','Стеллаж А','AVAILABLE');
+Insert into C##DENIS.BOOK_INVENTORY (INVENTORY_ID,BOOK_ID,LOCATION,STATUS) values ('2','2','Стеллаж Б','AVAILABLE');
+Insert into C##DENIS.BOOK_INVENTORY (INVENTORY_ID,BOOK_ID,LOCATION,STATUS) values ('3','3','Стеллаж В','ON_REPAIR');
+Insert into C##DENIS.BOOK_INVENTORY (INVENTORY_ID,BOOK_ID,LOCATION,STATUS) values ('5','5','Стеллаж Д','AVAILABLE');
+Insert into C##DENIS.BOOK_INVENTORY (INVENTORY_ID,BOOK_ID,LOCATION,STATUS) values ('6','6','Стеллаж Е','LOST');
+Insert into C##DENIS.BOOK_INVENTORY (INVENTORY_ID,BOOK_ID,LOCATION,STATUS) values ('9','9','Стеллаж И','AVAILABLE');
+Insert into C##DENIS.BOOK_INVENTORY (INVENTORY_ID,BOOK_ID,LOCATION,STATUS) values ('11','1','Стеллаж А','AVAILABLE');
+Insert into C##DENIS.BOOK_INVENTORY (INVENTORY_ID,BOOK_ID,LOCATION,STATUS) values ('12','2','Стеллаж Б','AVAILABLE');
+Insert into C##DENIS.BOOK_INVENTORY (INVENTORY_ID,BOOK_ID,LOCATION,STATUS) values ('13','3','Стеллаж В','ON_REPAIR');
+Insert into C##DENIS.BOOK_INVENTORY (INVENTORY_ID,BOOK_ID,LOCATION,STATUS) values ('15','5','Стеллаж Д','AVAILABLE');
+Insert into C##DENIS.BOOK_INVENTORY (INVENTORY_ID,BOOK_ID,LOCATION,STATUS) values ('16','6','Стеллаж Е','LOST');
+Insert into C##DENIS.BOOK_INVENTORY (INVENTORY_ID,BOOK_ID,LOCATION,STATUS) values ('19','9','Стеллаж И','AVAILABLE');
 REM INSERTING into C##DENIS.GENRES
 SET DEFINE OFF;
-Insert into C##DENIS.GENRES (GENRE_NAME) values ('Р”РµС‚РµРєС‚РёРІ');
-Insert into C##DENIS.GENRES (GENRE_NAME) values ('РСЃС‚РѕСЂРёС‡РµСЃРєРёР№ СЂРѕРјР°РЅ');
-Insert into C##DENIS.GENRES (GENRE_NAME) values ('РљР»Р°СЃСЃРёРєР°');
-Insert into C##DENIS.GENRES (GENRE_NAME) values ('РќР°СѓС‡РЅР°СЏ Р»РёС‚РµСЂР°С‚СѓСЂР°');
-Insert into C##DENIS.GENRES (GENRE_NAME) values ('РџРѕСЌР·РёСЏ');
-Insert into C##DENIS.GENRES (GENRE_NAME) values ('РџСЂРёРєР»СЋС‡РµРЅРёСЏ');
-Insert into C##DENIS.GENRES (GENRE_NAME) values ('РџСЃРёС…РѕР»РѕРіРёСЏ');
-Insert into C##DENIS.GENRES (GENRE_NAME) values ('Р РѕРјР°РЅ');
-Insert into C##DENIS.GENRES (GENRE_NAME) values ('Р¤Р°РЅС‚Р°СЃС‚РёРєР°');
-Insert into C##DENIS.GENRES (GENRE_NAME) values ('Р¤СЌРЅС‚РµР·Рё');
+Insert into C##DENIS.GENRES (GENRE_NAME) values ('Детектив');
+Insert into C##DENIS.GENRES (GENRE_NAME) values ('Исторический роман');
+Insert into C##DENIS.GENRES (GENRE_NAME) values ('Классика');
+Insert into C##DENIS.GENRES (GENRE_NAME) values ('Научная литература');
+Insert into C##DENIS.GENRES (GENRE_NAME) values ('Поэзия');
+Insert into C##DENIS.GENRES (GENRE_NAME) values ('Приключения');
+Insert into C##DENIS.GENRES (GENRE_NAME) values ('Психология');
+Insert into C##DENIS.GENRES (GENRE_NAME) values ('Роман');
+Insert into C##DENIS.GENRES (GENRE_NAME) values ('Фантастика');
+Insert into C##DENIS.GENRES (GENRE_NAME) values ('Фэнтези');
 REM INSERTING into C##DENIS.LOANS
 SET DEFINE OFF;
-Insert into C##DENIS.LOANS (LOAN_ID,INVENTORY_ID,READER_ID,LOAN_DATE,DUE_DATE,RETURN_DATE,STATUS,LIBRARIAN_ID) values ('1','1','3',to_date('05.01.23','DD.MM.RR'),to_date('15.01.23','DD.MM.RR'),null,'ISSUED','2');
-Insert into C##DENIS.LOANS (LOAN_ID,INVENTORY_ID,READER_ID,LOAN_DATE,DUE_DATE,RETURN_DATE,STATUS,LIBRARIAN_ID) values ('2','2','1',to_date('10.02.23','DD.MM.RR'),to_date('20.02.23','DD.MM.RR'),null,'RETURNED','2');
-Insert into C##DENIS.LOANS (LOAN_ID,INVENTORY_ID,READER_ID,LOAN_DATE,DUE_DATE,RETURN_DATE,STATUS,LIBRARIAN_ID) values ('3','3','2',to_date('15.03.23','DD.MM.RR'),to_date('25.03.23','DD.MM.RR'),null,'ISSUED','1');
-Insert into C##DENIS.LOANS (LOAN_ID,INVENTORY_ID,READER_ID,LOAN_DATE,DUE_DATE,RETURN_DATE,STATUS,LIBRARIAN_ID) values ('5','5','5',to_date('05.05.23','DD.MM.RR'),to_date('15.05.23','DD.MM.RR'),null,'ISSUED','4');
-Insert into C##DENIS.LOANS (LOAN_ID,INVENTORY_ID,READER_ID,LOAN_DATE,DUE_DATE,RETURN_DATE,STATUS,LIBRARIAN_ID) values ('6','6','7',to_date('10.06.23','DD.MM.RR'),to_date('20.06.23','DD.MM.RR'),null,'ISSUED','6');
-Insert into C##DENIS.LOANS (LOAN_ID,INVENTORY_ID,READER_ID,LOAN_DATE,DUE_DATE,RETURN_DATE,STATUS,LIBRARIAN_ID) values ('9','9','9',to_date('25.09.23','DD.MM.RR'),to_date('05.10.23','DD.MM.RR'),null,'ISSUED','9');
-Insert into C##DENIS.LOANS (LOAN_ID,INVENTORY_ID,READER_ID,LOAN_DATE,DUE_DATE,RETURN_DATE,STATUS,LIBRARIAN_ID) values ('11','1','3',to_date('05.01.23','DD.MM.RR'),to_date('15.01.23','DD.MM.RR'),null,'ISSUED','2');
-Insert into C##DENIS.LOANS (LOAN_ID,INVENTORY_ID,READER_ID,LOAN_DATE,DUE_DATE,RETURN_DATE,STATUS,LIBRARIAN_ID) values ('12','2','1',to_date('10.02.23','DD.MM.RR'),to_date('20.02.23','DD.MM.RR'),null,'RETURNED','2');
-Insert into C##DENIS.LOANS (LOAN_ID,INVENTORY_ID,READER_ID,LOAN_DATE,DUE_DATE,RETURN_DATE,STATUS,LIBRARIAN_ID) values ('13','3','2',to_date('15.03.23','DD.MM.RR'),to_date('25.03.23','DD.MM.RR'),null,'ISSUED','1');
-Insert into C##DENIS.LOANS (LOAN_ID,INVENTORY_ID,READER_ID,LOAN_DATE,DUE_DATE,RETURN_DATE,STATUS,LIBRARIAN_ID) values ('15','5','5',to_date('05.05.23','DD.MM.RR'),to_date('15.05.23','DD.MM.RR'),null,'ISSUED','4');
-Insert into C##DENIS.LOANS (LOAN_ID,INVENTORY_ID,READER_ID,LOAN_DATE,DUE_DATE,RETURN_DATE,STATUS,LIBRARIAN_ID) values ('16','6','7',to_date('10.06.23','DD.MM.RR'),to_date('20.06.23','DD.MM.RR'),null,'ISSUED','6');
-Insert into C##DENIS.LOANS (LOAN_ID,INVENTORY_ID,READER_ID,LOAN_DATE,DUE_DATE,RETURN_DATE,STATUS,LIBRARIAN_ID) values ('19','9','9',to_date('25.09.23','DD.MM.RR'),to_date('05.10.23','DD.MM.RR'),null,'ISSUED','9');
+Insert into C##DENIS.LOANS (LOAN_ID,INVENTORY_ID,READER_ID,LOAN_DATE,DUE_DATE,RETURN_DATE,STATUS) values ('1','1','3',to_date('05.01.23','DD.MM.RR'),to_date('15.01.23','DD.MM.RR'),null,'ISSUED');
+Insert into C##DENIS.LOANS (LOAN_ID,INVENTORY_ID,READER_ID,LOAN_DATE,DUE_DATE,RETURN_DATE,STATUS) values ('2','2','1',to_date('10.02.23','DD.MM.RR'),to_date('20.02.23','DD.MM.RR'),null,'RETURNED');
+Insert into C##DENIS.LOANS (LOAN_ID,INVENTORY_ID,READER_ID,LOAN_DATE,DUE_DATE,RETURN_DATE,STATUS) values ('3','3','2',to_date('15.03.23','DD.MM.RR'),to_date('25.03.23','DD.MM.RR'),null,'ISSUED');
+Insert into C##DENIS.LOANS (LOAN_ID,INVENTORY_ID,READER_ID,LOAN_DATE,DUE_DATE,RETURN_DATE,STATUS) values ('5','5','5',to_date('05.05.23','DD.MM.RR'),to_date('15.05.23','DD.MM.RR'),null,'ISSUED');
+Insert into C##DENIS.LOANS (LOAN_ID,INVENTORY_ID,READER_ID,LOAN_DATE,DUE_DATE,RETURN_DATE,STATUS) values ('6','6','7',to_date('10.06.23','DD.MM.RR'),to_date('20.06.23','DD.MM.RR'),null,'ISSUED');
+Insert into C##DENIS.LOANS (LOAN_ID,INVENTORY_ID,READER_ID,LOAN_DATE,DUE_DATE,RETURN_DATE,STATUS) values ('9','9','9',to_date('25.09.23','DD.MM.RR'),to_date('05.10.23','DD.MM.RR'),null,'ISSUED');
+Insert into C##DENIS.LOANS (LOAN_ID,INVENTORY_ID,READER_ID,LOAN_DATE,DUE_DATE,RETURN_DATE,STATUS) values ('11','1','3',to_date('05.01.23','DD.MM.RR'),to_date('15.01.23','DD.MM.RR'),null,'ISSUED');
+Insert into C##DENIS.LOANS (LOAN_ID,INVENTORY_ID,READER_ID,LOAN_DATE,DUE_DATE,RETURN_DATE,STATUS) values ('12','2','1',to_date('10.02.23','DD.MM.RR'),to_date('20.02.23','DD.MM.RR'),null,'RETURNED');
+Insert into C##DENIS.LOANS (LOAN_ID,INVENTORY_ID,READER_ID,LOAN_DATE,DUE_DATE,RETURN_DATE,STATUS) values ('13','3','2',to_date('15.03.23','DD.MM.RR'),to_date('25.03.23','DD.MM.RR'),null,'ISSUED');
+Insert into C##DENIS.LOANS (LOAN_ID,INVENTORY_ID,READER_ID,LOAN_DATE,DUE_DATE,RETURN_DATE,STATUS) values ('15','5','5',to_date('05.05.23','DD.MM.RR'),to_date('15.05.23','DD.MM.RR'),null,'ISSUED');
+Insert into C##DENIS.LOANS (LOAN_ID,INVENTORY_ID,READER_ID,LOAN_DATE,DUE_DATE,RETURN_DATE,STATUS) values ('16','6','7',to_date('10.06.23','DD.MM.RR'),to_date('20.06.23','DD.MM.RR'),null,'ISSUED');
+Insert into C##DENIS.LOANS (LOAN_ID,INVENTORY_ID,READER_ID,LOAN_DATE,DUE_DATE,RETURN_DATE,STATUS) values ('19','9','9',to_date('25.09.23','DD.MM.RR'),to_date('05.10.23','DD.MM.RR'),null,'ISSUED');
 REM INSERTING into C##DENIS.PENALTIES
 SET DEFINE OFF;
-Insert into C##DENIS.PENALTIES (PENALTY_ID,READER_ID,VALIDITY,REASON,PENALTY_DATE,EXPIRATION_DATE) values ('1','1','5','РџСЂРѕСЃСЂРѕС‡РєР°',to_date('25.02.23','DD.MM.RR'),to_date('25.03.23','DD.MM.RR'));
-Insert into C##DENIS.PENALTIES (PENALTY_ID,READER_ID,VALIDITY,REASON,PENALTY_DATE,EXPIRATION_DATE) values ('2','2','3','РџРѕРІСЂРµР¶РґРµРЅРёРµ РєРЅРёРіРё',to_date('10.04.23','DD.MM.RR'),to_date('20.04.23','DD.MM.RR'));
-Insert into C##DENIS.PENALTIES (PENALTY_ID,READER_ID,VALIDITY,REASON,PENALTY_DATE,EXPIRATION_DATE) values ('3','3','7','РЈС‚РµСЂСЏ РєРЅРёРіРё',to_date('20.06.23','DD.MM.RR'),to_date('20.07.23','DD.MM.RR'));
-Insert into C##DENIS.PENALTIES (PENALTY_ID,READER_ID,VALIDITY,REASON,PENALTY_DATE,EXPIRATION_DATE) values ('4','4','4','РџРѕРІСЂРµР¶РґРµРЅРёРµ РѕР±Р»РѕР¶РєРё',to_date('05.08.23','DD.MM.RR'),to_date('09.08.23','DD.MM.RR'));
-Insert into C##DENIS.PENALTIES (PENALTY_ID,READER_ID,VALIDITY,REASON,PENALTY_DATE,EXPIRATION_DATE) values ('5','5','6','РџСЂРѕСЃСЂРѕС‡РєР°',to_date('15.10.23','DD.MM.RR'),to_date('21.10.23','DD.MM.RR'));
-Insert into C##DENIS.PENALTIES (PENALTY_ID,READER_ID,VALIDITY,REASON,PENALTY_DATE,EXPIRATION_DATE) values ('6','6','2','РџРѕРІСЂРµР¶РґРµРЅРёРµ СЃС‚СЂР°РЅРёС†',to_date('30.11.23','DD.MM.RR'),to_date('02.12.23','DD.MM.RR'));
-Insert into C##DENIS.PENALTIES (PENALTY_ID,READER_ID,VALIDITY,REASON,PENALTY_DATE,EXPIRATION_DATE) values ('7','1','5','РџСЂРѕСЃСЂРѕС‡РєР°',to_date('25.02.23','DD.MM.RR'),to_date('25.03.23','DD.MM.RR'));
-Insert into C##DENIS.PENALTIES (PENALTY_ID,READER_ID,VALIDITY,REASON,PENALTY_DATE,EXPIRATION_DATE) values ('8','2','3','РџРѕРІСЂРµР¶РґРµРЅРёРµ РєРЅРёРіРё',to_date('10.04.23','DD.MM.RR'),to_date('20.04.23','DD.MM.RR'));
-Insert into C##DENIS.PENALTIES (PENALTY_ID,READER_ID,VALIDITY,REASON,PENALTY_DATE,EXPIRATION_DATE) values ('9','3','7','РЈС‚РµСЂСЏ РєРЅРёРіРё',to_date('20.06.23','DD.MM.RR'),to_date('20.07.23','DD.MM.RR'));
-Insert into C##DENIS.PENALTIES (PENALTY_ID,READER_ID,VALIDITY,REASON,PENALTY_DATE,EXPIRATION_DATE) values ('10','4','4','РџРѕРІСЂРµР¶РґРµРЅРёРµ РѕР±Р»РѕР¶РєРё',to_date('05.08.23','DD.MM.RR'),to_date('09.08.23','DD.MM.RR'));
-Insert into C##DENIS.PENALTIES (PENALTY_ID,READER_ID,VALIDITY,REASON,PENALTY_DATE,EXPIRATION_DATE) values ('11','5','6','РџСЂРѕСЃСЂРѕС‡РєР°',to_date('15.10.23','DD.MM.RR'),to_date('21.10.23','DD.MM.RR'));
-Insert into C##DENIS.PENALTIES (PENALTY_ID,READER_ID,VALIDITY,REASON,PENALTY_DATE,EXPIRATION_DATE) values ('12','6','2','РџРѕРІСЂРµР¶РґРµРЅРёРµ СЃС‚СЂР°РЅРёС†',to_date('30.11.23','DD.MM.RR'),to_date('02.12.23','DD.MM.RR'));
+Insert into C##DENIS.PENALTIES (PENALTY_ID,READER_ID,VALIDITY,REASON,PENALTY_DATE,EXPIRATION_DATE,LIBRARIAN_ID) values ('1','1','5','Просрочка',to_date('25.02.23','DD.MM.RR'),to_date('25.03.23','DD.MM.RR'),null);
+Insert into C##DENIS.PENALTIES (PENALTY_ID,READER_ID,VALIDITY,REASON,PENALTY_DATE,EXPIRATION_DATE,LIBRARIAN_ID) values ('2','2','3','Повреждение книги',to_date('10.04.23','DD.MM.RR'),to_date('20.04.23','DD.MM.RR'),null);
+Insert into C##DENIS.PENALTIES (PENALTY_ID,READER_ID,VALIDITY,REASON,PENALTY_DATE,EXPIRATION_DATE,LIBRARIAN_ID) values ('3','3','7','Утеря книги',to_date('20.06.23','DD.MM.RR'),to_date('20.07.23','DD.MM.RR'),null);
+Insert into C##DENIS.PENALTIES (PENALTY_ID,READER_ID,VALIDITY,REASON,PENALTY_DATE,EXPIRATION_DATE,LIBRARIAN_ID) values ('4','4','4','Повреждение обложки',to_date('05.08.23','DD.MM.RR'),to_date('09.08.23','DD.MM.RR'),null);
+Insert into C##DENIS.PENALTIES (PENALTY_ID,READER_ID,VALIDITY,REASON,PENALTY_DATE,EXPIRATION_DATE,LIBRARIAN_ID) values ('5','5','6','Просрочка',to_date('15.10.23','DD.MM.RR'),to_date('21.10.23','DD.MM.RR'),null);
+Insert into C##DENIS.PENALTIES (PENALTY_ID,READER_ID,VALIDITY,REASON,PENALTY_DATE,EXPIRATION_DATE,LIBRARIAN_ID) values ('6','6','2','Повреждение страниц',to_date('30.11.23','DD.MM.RR'),to_date('02.12.23','DD.MM.RR'),null);
+Insert into C##DENIS.PENALTIES (PENALTY_ID,READER_ID,VALIDITY,REASON,PENALTY_DATE,EXPIRATION_DATE,LIBRARIAN_ID) values ('7','1','5','Просрочка',to_date('25.02.23','DD.MM.RR'),to_date('25.03.23','DD.MM.RR'),null);
+Insert into C##DENIS.PENALTIES (PENALTY_ID,READER_ID,VALIDITY,REASON,PENALTY_DATE,EXPIRATION_DATE,LIBRARIAN_ID) values ('8','2','3','Повреждение книги',to_date('10.04.23','DD.MM.RR'),to_date('20.04.23','DD.MM.RR'),null);
+Insert into C##DENIS.PENALTIES (PENALTY_ID,READER_ID,VALIDITY,REASON,PENALTY_DATE,EXPIRATION_DATE,LIBRARIAN_ID) values ('9','3','7','Утеря книги',to_date('20.06.23','DD.MM.RR'),to_date('20.07.23','DD.MM.RR'),null);
+Insert into C##DENIS.PENALTIES (PENALTY_ID,READER_ID,VALIDITY,REASON,PENALTY_DATE,EXPIRATION_DATE,LIBRARIAN_ID) values ('10','4','4','Повреждение обложки',to_date('05.08.23','DD.MM.RR'),to_date('09.08.23','DD.MM.RR'),null);
+Insert into C##DENIS.PENALTIES (PENALTY_ID,READER_ID,VALIDITY,REASON,PENALTY_DATE,EXPIRATION_DATE,LIBRARIAN_ID) values ('11','5','6','Просрочка',to_date('15.10.23','DD.MM.RR'),to_date('21.10.23','DD.MM.RR'),null);
+Insert into C##DENIS.PENALTIES (PENALTY_ID,READER_ID,VALIDITY,REASON,PENALTY_DATE,EXPIRATION_DATE,LIBRARIAN_ID) values ('12','6','2','Повреждение страниц',to_date('30.11.23','DD.MM.RR'),to_date('02.12.23','DD.MM.RR'),null);
 REM INSERTING into C##DENIS.PUBLISHERS
 SET DEFINE OFF;
 Insert into C##DENIS.PUBLISHERS (PUBLISHER_NAME) values ('ACT');
-Insert into C##DENIS.PUBLISHERS (PUBLISHER_NAME) values ('РђР»СЊРїРёРЅР° РџР°Р±Р»РёС€РµСЂ');
-Insert into C##DENIS.PUBLISHERS (PUBLISHER_NAME) values ('РР·РґР°С‚РµР»СЊСЃС‚РІРѕ РђРЎРў');
-Insert into C##DENIS.PUBLISHERS (PUBLISHER_NAME) values ('РљРѕР›РёР±СЂРё');
-Insert into C##DENIS.PUBLISHERS (PUBLISHER_NAME) values ('РњР°РЅРЅ, РРІР°РЅРѕРІ Рё Р¤РµСЂР±РµСЂ');
-Insert into C##DENIS.PUBLISHERS (PUBLISHER_NAME) values ('РњРѕСЃРєРѕРІСЃРєРёР№ СЂР°Р±РѕС‡РёР№');
-Insert into C##DENIS.PUBLISHERS (PUBLISHER_NAME) values ('РџРѕРїСѓСЂСЂРё');
-Insert into C##DENIS.PUBLISHERS (PUBLISHER_NAME) values ('РџСЂРѕСЃРІРµС‰РµРЅРёРµ');
-Insert into C##DENIS.PUBLISHERS (PUBLISHER_NAME) values ('Р РёРїРѕР» РљР»Р°СЃСЃРёРє');
-Insert into C##DENIS.PUBLISHERS (PUBLISHER_NAME) values ('Р­РєСЃРјРѕ');
+Insert into C##DENIS.PUBLISHERS (PUBLISHER_NAME) values ('Альпина Паблишер');
+Insert into C##DENIS.PUBLISHERS (PUBLISHER_NAME) values ('Издательство АСТ');
+Insert into C##DENIS.PUBLISHERS (PUBLISHER_NAME) values ('КоЛибри');
+Insert into C##DENIS.PUBLISHERS (PUBLISHER_NAME) values ('Манн, Иванов и Фербер');
+Insert into C##DENIS.PUBLISHERS (PUBLISHER_NAME) values ('Московский рабочий');
+Insert into C##DENIS.PUBLISHERS (PUBLISHER_NAME) values ('Попурри');
+Insert into C##DENIS.PUBLISHERS (PUBLISHER_NAME) values ('Просвещение');
+Insert into C##DENIS.PUBLISHERS (PUBLISHER_NAME) values ('Рипол Классик');
+Insert into C##DENIS.PUBLISHERS (PUBLISHER_NAME) values ('Эксмо');
 REM INSERTING into C##DENIS.USERS
 SET DEFINE OFF;
-Insert into C##DENIS.USERS (ID,TYPE,LOGIN,PASSWORD,STATUS,NAME) values ('1','ADMIN','Р°РґРјРёРЅ1','РїР°СЂРѕР»СЊ123','ACTIVE','РђРґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂ РђР»РµРєСЃРµР№');
-Insert into C##DENIS.USERS (ID,TYPE,LOGIN,PASSWORD,STATUS,NAME) values ('2','LIBRARIAN','Р±РёР±Р»РёРѕС‚РµРєР°СЂСЊ1','lib456','ACTIVE','Р•Р»РµРЅР° Р‘РёР±Р»РёРѕС‚РµРєР°СЂРµРІР°');
-Insert into C##DENIS.USERS (ID,TYPE,LOGIN,PASSWORD,STATUS,NAME) values ('3','READER','С‡РёС‚Р°С‚РµР»СЊ99','pass321','ACTIVE','РРІР°РЅ Р§РёС‚Р°С‚РµР»СЊСЃРєРёР№');
-Insert into C##DENIS.USERS (ID,TYPE,LOGIN,PASSWORD,STATUS,NAME) values ('4','READER','Р»СЋР±РѕР·РЅР°С‚РµР»СЊРЅР°СЏ_Р°РЅРЅР°','anna2023','ACTIVE','РђРЅРЅР° РЎРµРјРµРЅРѕРІР°');
-Insert into C##DENIS.USERS (ID,TYPE,LOGIN,PASSWORD,STATUS,NAME) values ('5','ADMIN','admin_kate','kateadmin','ACTIVE','РљР°С‚СЏ РђРґРјРёРЅРѕРІР°');
-Insert into C##DENIS.USERS (ID,TYPE,LOGIN,PASSWORD,STATUS,NAME) values ('6','LIBRARIAN','lib_ivanov','lib2023','ACTIVE','РРІР°РЅ РРІР°РЅРѕРІ');
-Insert into C##DENIS.USERS (ID,TYPE,LOGIN,PASSWORD,STATUS,NAME) values ('7','READER','bookworm23','librarypass','ACTIVE','РђР»РµРєСЃР°РЅРґСЂР° РљРЅРёР¶РЅР°СЏ');
-Insert into C##DENIS.USERS (ID,TYPE,LOGIN,PASSWORD,STATUS,NAME) values ('8','READER','readingjoe','joe2023','ACTIVE','Р”Р¶Рѕ Р РёРґРµСЂ');
-Insert into C##DENIS.USERS (ID,TYPE,LOGIN,PASSWORD,STATUS,NAME) values ('9','ADMIN','Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂ_РїРµС‚СЂ','adminpetr','ACTIVE','РџРµС‚СЂ РџРµС‚СЂРѕРІ');
-Insert into C##DENIS.USERS (ID,TYPE,LOGIN,PASSWORD,STATUS,NAME) values ('10','LIBRARIAN','lib_maria','maria_library','ACTIVE','РњР°СЂРёСЏ Р›РёР±СЂР°СЂРё');
-Insert into C##DENIS.USERS (ID,TYPE,LOGIN,PASSWORD,STATUS,NAME) values ('11','READER','booklover','read2023','ACTIVE','РћР»СЊРіР° Р§РёС‚Р°Р»РєРёРЅР°');
+Insert into C##DENIS.USERS (ID,TYPE,LOGIN,PASSWORD,STATUS,NAME) values ('1','ADMIN','админ1','пароль123','ACTIVE','Администратор Алексей');
+Insert into C##DENIS.USERS (ID,TYPE,LOGIN,PASSWORD,STATUS,NAME) values ('2','LIBRARIAN','библиотекарь1','lib456','ACTIVE','Елена Библиотекарева');
+Insert into C##DENIS.USERS (ID,TYPE,LOGIN,PASSWORD,STATUS,NAME) values ('3','READER','читатель99','pass321','ACTIVE','Иван Читательский');
+Insert into C##DENIS.USERS (ID,TYPE,LOGIN,PASSWORD,STATUS,NAME) values ('4','READER','любознательная_анна','anna2023','ACTIVE','Анна Семенова');
+Insert into C##DENIS.USERS (ID,TYPE,LOGIN,PASSWORD,STATUS,NAME) values ('5','ADMIN','admin_kate','kateadmin','ACTIVE','Катя Админова');
+Insert into C##DENIS.USERS (ID,TYPE,LOGIN,PASSWORD,STATUS,NAME) values ('6','LIBRARIAN','lib_ivanov','lib2023','ACTIVE','Иван Иванов');
+Insert into C##DENIS.USERS (ID,TYPE,LOGIN,PASSWORD,STATUS,NAME) values ('7','READER','bookworm23','librarypass','ACTIVE','Александра Книжная');
+Insert into C##DENIS.USERS (ID,TYPE,LOGIN,PASSWORD,STATUS,NAME) values ('8','READER','readingjoe','joe2023','ACTIVE','Джо Ридер');
+Insert into C##DENIS.USERS (ID,TYPE,LOGIN,PASSWORD,STATUS,NAME) values ('9','ADMIN','администратор_петр','adminpetr','ACTIVE','Петр Петров');
+Insert into C##DENIS.USERS (ID,TYPE,LOGIN,PASSWORD,STATUS,NAME) values ('10','LIBRARIAN','lib_maria','maria_library','ACTIVE','Мария Либрари');
+Insert into C##DENIS.USERS (ID,TYPE,LOGIN,PASSWORD,STATUS,NAME) values ('11','READER','booklover','read2023','ACTIVE','Ольга Читалкина');
 --------------------------------------------------------
 --  DDL for Index PK_AUTHORS
 --------------------------------------------------------
@@ -340,8 +372,8 @@ Insert into C##DENIS.USERS (ID,TYPE,LOGIN,PASSWORD,STATUS,NAME) values ('11','RE
 --  Constraints for Table LOANS
 --------------------------------------------------------
 
+  ALTER TABLE "C##DENIS"."LOANS" ADD CONSTRAINT "CHECK_LOAN_STATUS" CHECK (STATUS IN ('RESERVED', 'ISSUED', 'RETURNED', 'CANCELED')) ENABLE;
   ALTER TABLE "C##DENIS"."LOANS" MODIFY ("LOAN_ID" NOT NULL ENABLE);
-  ALTER TABLE "C##DENIS"."LOANS" ADD CONSTRAINT "CHECK_LOAN_STATUS" CHECK (STATUS IN ('RESERVED', 'ISSUED', 'RETURNED')) ENABLE;
   ALTER TABLE "C##DENIS"."LOANS" ADD CONSTRAINT "CHK_LOANS_DATES" CHECK (LOAN_DATE <= DUE_DATE AND (RETURN_DATE IS NULL OR RETURN_DATE <= DUE_DATE)) ENABLE;
   ALTER TABLE "C##DENIS"."LOANS" ADD CONSTRAINT "PK_LOANS" PRIMARY KEY ("LOAN_ID")
   USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
@@ -431,5 +463,15 @@ Insert into C##DENIS.USERS (ID,TYPE,LOGIN,PASSWORD,STATUS,NAME) values ('11','RE
 --  Ref Constraints for Table LOANS
 --------------------------------------------------------
 
+  ALTER TABLE "C##DENIS"."LOANS" ADD CONSTRAINT "LOANS_USERS_ID_fk" FOREIGN KEY ("READER_ID")
+	  REFERENCES "C##DENIS"."USERS" ("ID") ENABLE;
   ALTER TABLE "C##DENIS"."LOANS" ADD FOREIGN KEY ("INVENTORY_ID")
 	  REFERENCES "C##DENIS"."BOOK_INVENTORY" ("INVENTORY_ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table PENALTIES
+--------------------------------------------------------
+
+  ALTER TABLE "C##DENIS"."PENALTIES" ADD CONSTRAINT "PENALTIES_USERS_ID_fk" FOREIGN KEY ("LIBRARIAN_ID")
+	  REFERENCES "C##DENIS"."USERS" ("ID") ENABLE;
+  ALTER TABLE "C##DENIS"."PENALTIES" ADD CONSTRAINT "PENALTIES_USERS_ID_fk2" FOREIGN KEY ("READER_ID")
+	  REFERENCES "C##DENIS"."USERS" ("ID") ENABLE;
