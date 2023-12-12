@@ -1,5 +1,4 @@
 
-BEGIN
     -- Создание записи о займе книги
     INSERT INTO LOANS (LOAN_ID, INVENTORY_ID, READER_ID, LOAN_DATE, DUE_DATE, STATUS)
     VALUES (C##DENIS.LOANS_SEQUENCE.NEXTVAL, ?, ?, ?, ?, ?);
@@ -8,12 +7,6 @@ BEGIN
     UPDATE BOOK_INVENTORY
     SET STATUS = 'ISSUED'
     WHERE INVENTORY_ID = ?;
-
-    COMMIT; -- Фиксация транзакции, если оба запроса выполнены успешно
-EXCEPTION
-    WHEN OTHERS THEN
-        ROLLBACK; -- Откат изменений в случае возникновения ошибки
-END;
 
 -- Получение информации о займе книги по ID
 SELECT * FROM LOANS WHERE LOAN_ID = ?;
@@ -31,3 +24,5 @@ SELECT * FROM LOANS WHERE STATUS = ?;
 
 -- Получение списка всех займов, просроченных на определенную дату
 SELECT * FROM LOANS WHERE DUE_DATE < ?;
+
+
