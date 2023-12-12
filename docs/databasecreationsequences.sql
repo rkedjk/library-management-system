@@ -74,14 +74,15 @@ create table LOANS
             primary key,
     INVENTORY_ID NUMBER
         references BOOK_INVENTORY,
-    READER_ID    NUMBER,
+    READER_ID    NUMBER
+        constraint "LOANS_USERS_ID_fk"
+            references USERS,
     LOAN_DATE    DATE,
     DUE_DATE     DATE,
     RETURN_DATE  DATE,
     STATUS       VARCHAR2(20)
         constraint CHECK_LOAN_STATUS
-            check (STATUS IN ('RESERVED', 'ISSUED', 'RETURNED')),
-    LIBRARIAN_ID NUMBER,
+            check (STATUS IN ('RESERVED', 'ISSUED', 'RETURNED', 'CANCELED')),
     constraint CHK_LOANS_DATES
         check (LOAN_DATE <= DUE_DATE AND (RETURN_DATE IS NULL OR RETURN_DATE <= DUE_DATE))
 )
@@ -91,12 +92,17 @@ create table PENALTIES
     PENALTY_ID      NUMBER default "C##DENIS"."PENALTIES_SEQ"."NEXTVAL" not null
         constraint PK_PENALTIES
             primary key,
-    READER_ID       NUMBER,
+    READER_ID       NUMBER
+        constraint "PENALTIES_USERS_ID_fk2"
+            references USERS,
     VALIDITY        NUMBER
         constraint CHK_PENALTIES_AMOUNT
             check (VALIDITY >= 0),
     REASON          VARCHAR2(255),
     PENALTY_DATE    DATE,
-    EXPIRATION_DATE DATE
+    EXPIRATION_DATE DATE,
+    LIBRARIAN_ID    NUMBER
+        constraint "PENALTIES_USERS_ID_fk"
+            references USERS
 )
 /
