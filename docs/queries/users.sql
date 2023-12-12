@@ -36,5 +36,5 @@ SELECT * FROM USERS WHERE TYPE = ? AND STATUS = ?;
 
 -- Создание пользователя (от пользователя и библиотекаря)
 INSERT INTO USERS (ID, TYPE, LOGIN, PASSWORD, STATUS, NAME)
-VALUES (C##DENIS.USERS_SEQ.NEXTVAL, ?, READER, ?, ?, ?);
+VALUES (C##DENIS.USERS_SEQ.NEXTVAL, ?, 'READER', ?, ?, ?);
 
