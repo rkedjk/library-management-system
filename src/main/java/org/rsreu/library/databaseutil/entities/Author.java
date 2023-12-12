@@ -1,20 +1,15 @@
 package org.rsreu.library.databaseutil.entities;
 
 public class Author {
-    private int authorId;
-    private String authorName;
-	public int getAuthorId() {
-		return authorId;
-	}
-	public void setAuthorId(int authorId) {
-		this.authorId = authorId;
-	}
+
+	private String authorName;
+
+	// Getter and Setter for AUTHOR_NAME
 	public String getAuthorName() {
 		return authorName;
 	}
+
 	public void setAuthorName(String authorName) {
 		this.authorName = authorName;
 	}
-
 }
-

@@ -1,34 +1,31 @@
 package org.rsreu.library.databaseutil.entities;
 
-public class LibraryInventory {
-    private int inventoryId;
-    private Integer bookId;
+public class BookInventory {
+
+    private Long inventoryId;
+    private Long bookId;
     private String location;
     private String status;
 
-    public LibraryInventory(int inventoryId, Integer bookId, String location, String status) {
-        this.inventoryId = inventoryId;
-        this.bookId = bookId;
-        this.location = location;
-        this.status = status;
-    }
-
-    public int getInventoryId() {
+    // Getters and Setters for INVENTORY_ID
+    public Long getInventoryId() {
         return inventoryId;
     }
 
-    public void setInventoryId(int inventoryId) {
+    public void setInventoryId(Long inventoryId) {
         this.inventoryId = inventoryId;
     }
 
-    public Integer getBookId() {
+    // Getters and Setters for BOOK_ID
+    public Long getBookId() {
         return bookId;
     }
 
-    public void setBookId(Integer bookId) {
+    public void setBookId(Long bookId) {
         this.bookId = bookId;
     }
 
+    // Getters and Setters for LOCATION
     public String getLocation() {
         return location;
     }
@@ -37,6 +34,7 @@ public class LibraryInventory {
         this.location = location;
     }
 
+    // Getters and Setters for STATUS
     public String getStatus() {
         return status;
     }

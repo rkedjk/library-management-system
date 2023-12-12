@@ -2,7 +2,7 @@ package org.rsreu.library.databaseutil.entityDAO;
 
 import java.sql.*;
 import java.util.ArrayList;
-import org.rsreu.library.databaseutil.entities.Account;
+
 import org.rsreu.library.databaseutil.resourcer.*;
 import java.util.List;
 

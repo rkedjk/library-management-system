@@ -1,31 +1,24 @@
 package org.rsreu.library.databaseutil.entities;
 
+public class User {
 
-public class Account {
-    private int id;
+    private Long id;
     private String type;
     private String login;
     private String password;
     private String status;
-
     private String name;
-    public Account(int id, String type, String login, String password, String status,String name) {
-        this.id = id;
-        this.type = type;
-        this.login = login;
-        this.password = password;
-        this.status = status;
-        this.name = name;
-    }
 
-    public int getId() {
+    // Getters and Setters for ID
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
+    // Getters and Setters for TYPE
     public String getType() {
         return type;
     }
@@ -34,6 +27,7 @@ public class Account {
         this.type = type;
     }
 
+    // Getters and Setters for LOGIN
     public String getLogin() {
         return login;
     }
@@ -42,6 +36,7 @@ public class Account {
         this.login = login;
     }
 
+    // Getters and Setters for PASSWORD
     public String getPassword() {
         return password;
     }
@@ -50,6 +45,7 @@ public class Account {
         this.password = password;
     }
 
+    // Getters and Setters for STATUS
     public String getStatus() {
         return status;
     }
@@ -57,6 +53,8 @@ public class Account {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    // Getters and Setters for NAME
     public String getName() {
         return name;
     }

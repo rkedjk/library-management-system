@@ -1,12 +1,8 @@
 package org.rsreu.library.databaseutil.api;
 
-import org.rsreu.library.databaseutil.entities.Account;
 import org.rsreu.library.databaseutil.entityDAO.AccountDAO;
 import org.rsreu.library.databaseutil.OracleConnectionManager;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;

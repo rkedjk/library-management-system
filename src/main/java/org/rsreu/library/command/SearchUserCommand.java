@@ -2,7 +2,6 @@ package org.rsreu.library.command;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.rsreu.library.databaseutil.api.UserManagementAPI;
-import org.rsreu.library.databaseutil.entities.Account;
 import org.rsreu.library.resource.ConfigurationManager;
 
 import java.sql.SQLException;

@@ -1,7 +1,7 @@
 package org.rsreu.library.databaseutil.api;
 
 import org.rsreu.library.databaseutil.entityDAO.AccountDAO;
-import org.rsreu.library.databaseutil.entities.Account;
+
 import java.sql.SQLException;
 import org.rsreu.library.databaseutil.OracleConnectionManager;
 public class LoginAPI {
