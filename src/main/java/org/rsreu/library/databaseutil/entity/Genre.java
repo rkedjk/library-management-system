@@ -1,4 +1,4 @@
-package org.rsreu.library.databaseutil.entities;
+package org.rsreu.library.databaseutil.entity;
 
 public class Genre {
 

@@ -1,6 +1,6 @@
-package org.rsreu.library.databaseutil.entities;
+package org.rsreu.library.databaseutil.entity;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Penalty {
 
