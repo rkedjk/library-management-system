@@ -16,6 +16,25 @@ public class UserDAO {
     public UserDAO(Connection connection) {
         this.connection = connection;
     }
+    public List<User> getAllUsers() throws SQLException {
+        PreparedStatement statement = connection.prepareStatement(DatabaseManager.getProperty("query.admin.get_all_users"));
+        ResultSet resultSet = statement.executeQuery();
+
+        List<User> userList = new ArrayList<>();
+        while (resultSet.next()) {
+            User user = new User();
+            user.setId(resultSet.getLong("ID"));
+            user.setType(resultSet.getString("TYPE"));
+            user.setLogin(resultSet.getString("LOGIN"));
+            user.setPassword(resultSet.getString("PASSWORD"));
+            user.setStatus(resultSet.getString("STATUS"));
+            user.setName(resultSet.getString("NAME"));
+
+            userList.add(user);
+        }
+
+        return userList;
+    }
 
     public boolean insertUser(User user) throws SQLException {
         String query = DatabaseManager.getProperty("query.admin.insert_user");

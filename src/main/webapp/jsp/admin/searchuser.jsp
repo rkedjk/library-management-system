@@ -17,6 +17,7 @@
         <option value="name">Name</option>
         <option value="type">Type</option>
         <option value="status">Status</option>
+        <option value="null">None</option>
         <!-- Add more options if needed -->
     </select>
 

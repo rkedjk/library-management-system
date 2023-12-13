@@ -1,70 +1,87 @@
 package org.rsreu.library.databaseutil.api;
 
-import org.rsreu.library.databaseutil.entityDAO.AccountDAO;
+import org.rsreu.library.databaseutil.DAO.admin.UserDAO;
 import org.rsreu.library.databaseutil.OracleConnectionManager;
+import org.rsreu.library.databaseutil.entity.User;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserManagementAPI {
-    private final AccountDAO accountDAO;
+    private final UserDAO userDAO;
 
     public UserManagementAPI() {
-        this.accountDAO = new AccountDAO(OracleConnectionManager.getConnection());
+        Connection connection = OracleConnectionManager.getConnection(); // Obtain connection
+        userDAO = new UserDAO(connection);
     }
 
-    public List<Account> searchUserByProperty(String property, String value) throws SQLException {
-        switch (property.toLowerCase()) {
-            case "id":
-                try {
-                    int id = Integer.parseInt(value);
-                    List<Account> userByID = new ArrayList<>();
-                    Account user = accountDAO.getUserById(id);
-                    if (user != null) {
-                        userByID.add(user);
-                    }
-                    return userByID;
-                } catch (NumberFormatException e) {
-                    // Handle invalid input for ID (non-integer value)
-                    e.printStackTrace();
-                    return new ArrayList<>();
-                }
+    public List<Object> searchUsers(String searchType, String searchValue, String userType, String userStatus) throws SQLException {
+        List<User> userList = new ArrayList<>();
 
+        // Check different search types and perform appropriate search
+        switch (searchType.toLowerCase()) {
+            case "by id":
+                // Search by ID
+                long userId = Long.parseLong(searchValue);
+                userList.add(userDAO.getUserById(userId));
+                break;
             case "name":
-                return accountDAO.searchAccountsByName(value);
-
+                // Search by name
+                userList.addAll(userDAO.searchUserByName(searchValue));
+                break;
             case "type":
-                return accountDAO.getUsersByType(value);
-
-            case "status":
-                if (value == "ACTIVE"){
-                    return accountDAO.getActiveUsers();
-                } else {
-                    return accountDAO.getSuspendedAccounts();
-                }
-
-            // Add more cases for other properties if needed
-
+                // Search by type
+                userList.addAll(userDAO.getUsersByType(userType));
+                break;
+            case "userstatus":
+                // Search by user status
+                userList.addAll(userDAO.getUsersByStatus(userStatus));
+                break;
+            case "type and userstatus":
+                // Search by type and user status
+                userList.addAll(userDAO.getUsersByTypeAndStatus(userType, userStatus));
+                break;
+            case "none":
             default:
-                // Handle unknown property
-                return new ArrayList<>();
+                // Display all users if no specific search type is provided or search value is empty
+                userList.addAll(userDAO.getAllUsers());
+                break;
         }
-    }
-    public void setUserActiveByID(int userId) throws SQLException {
-        accountDAO.updateUserStatusById(userId,"ACTIVE");
 
-    }
-
-    public void setUserSuspendedByID(int userId) throws SQLException {
-        accountDAO.updateUserStatusById(userId, "SUSPENDED");
+        List<Object> convertedList = new ArrayList<>(userList);
+        return convertedList;
     }
 
-    public void addUser(Account newUser) throws SQLException {
-        accountDAO.insertNewUser(newUser);
+    public Object getUserById(long userId) throws SQLException {
+        User user = userDAO.getUserById(userId);
+        Object convertedUser = (Object) user; // Convert User to Object
+        return convertedUser;
+    }
+    public boolean insertUser(String type, String login, String password, String status, String name) throws SQLException {
+        User newUser = new User();
+        newUser.setType(type);
+        newUser.setLogin(login);
+        newUser.setPassword(password);
+        newUser.setStatus(status);
+        newUser.setName(name);
+        return userDAO.insertUser(newUser);
     }
 
-    public void deleteUserByID(int userId) throws SQLException {
-        accountDAO.deleteUserById(userId);
+    public boolean updateUser(long userId, String type, String login, String password, String status, String name) throws SQLException {
+        User updatedUser = new User();
+        updatedUser.setId(userId);
+        updatedUser.setType(type);
+        updatedUser.setLogin(login);
+        updatedUser.setPassword(password);
+        updatedUser.setStatus(status);
+        updatedUser.setName(name);
+        return userDAO.updateUser(updatedUser);
     }
+
+    public boolean deleteUserById(long userId) throws SQLException {
+        return userDAO.deleteUserById(userId);
+    }
+
 }
