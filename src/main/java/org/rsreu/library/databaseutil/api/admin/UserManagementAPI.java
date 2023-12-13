@@ -1,4 +1,4 @@
-package org.rsreu.library.databaseutil.api;
+package org.rsreu.library.databaseutil.api.admin;
 
 import org.rsreu.library.databaseutil.DAO.admin.UserDAO;
 import org.rsreu.library.databaseutil.OracleConnectionManager;

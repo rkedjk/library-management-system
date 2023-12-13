@@ -170,5 +170,24 @@ public class BookCatalogDAO {
 
         return bookList;
     }
+    public List<BookCatalog> getAllBookCatalog() throws SQLException {
+        List<BookCatalog> bookList = new ArrayList<>();
+        PreparedStatement statement = connection.prepareStatement(DatabaseManager.getProperty("query.librarian.get_all_book_catalog"));
+        ResultSet resultSet = statement.executeQuery();
+
+        while (resultSet.next()) {
+            BookCatalog bookCatalog = new BookCatalog();
+            bookCatalog.setBookId(resultSet.getLong("BOOK_ID"));
+            bookCatalog.setTitle(resultSet.getString("TITLE"));
+            bookCatalog.setYearPublished(resultSet.getInt("YEAR_PUBLISHED"));
+            bookCatalog.setAuthorName(resultSet.getString("AUTHOR_NAME"));
+            bookCatalog.setGenreName(resultSet.getString("GENRE_NAME"));
+            bookCatalog.setPublisherName(resultSet.getString("PUBLISHER_NAME"));
+
+            bookList.add(bookCatalog);
+        }
+
+        return bookList;
+    }
 
 }
