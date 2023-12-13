@@ -1,4 +1,4 @@
-package org.rsreu.library.command;
+/* package org.rsreu.library.command;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.rsreu.library.databaseutil.api.UserManagementAPI;
@@ -35,3 +35,4 @@ public class SearchUserCommand implements ActionCommand {
         return page;
     }
 }
+*/
