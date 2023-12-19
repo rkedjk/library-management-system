@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Login</title>
-
+    <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
 <form name="loginForm" method="POST" action="controller">

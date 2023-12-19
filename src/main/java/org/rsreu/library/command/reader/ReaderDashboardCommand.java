@@ -1,15 +1,14 @@
-package org.rsreu.library.command;
+package org.rsreu.library.command.reader;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.rsreu.library.command.ActionCommand;
 import org.rsreu.library.resource.ConfigurationManager;
 
-import java.io.IOException;
-
-public class UserDashboardCommand implements ActionCommand {
+public class ReaderDashboardCommand implements ActionCommand {
 
     @Override
-    public String execute(HttpServletRequest request) {
+    public String execute(HttpServletRequest request, HttpServletResponse response) {
         String page = null;
         String action = request.getParameter("action");
 

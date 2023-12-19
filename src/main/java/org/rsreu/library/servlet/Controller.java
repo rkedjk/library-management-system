@@ -1,6 +1,7 @@
 package org.rsreu.library.servlet;
 
 import java.io.*;
+import java.sql.SQLException;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -17,16 +18,24 @@ import org.rsreu.library.resource.MessageManager;
 public class Controller extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException {
         String page = null;
         // определение команды, пришедшей из JSP
         ActionFactory client = new ActionFactory();
@@ -35,7 +44,7 @@ public class Controller extends HttpServlet {
          * вызов реализованного метода execute() и передача параметров
          * классу-обработчику конкретной команды
          */
-        page = command.execute(request);
+        page = command.execute(request,response);
         // метод возвращает страницу ответа
         // page = null; // поэксперементировать!
         if (page != null) {

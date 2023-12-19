@@ -14,7 +14,7 @@ public class LoginCommand implements ActionCommand {
     private static final String PARAM_NAME_PASSWORD = "password";
 
     @Override
-    public String execute(HttpServletRequest request) {
+    public String execute(HttpServletRequest request, HttpServletResponse response) {
         String page = null;
         try {
 
