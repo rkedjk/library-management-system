@@ -9,6 +9,7 @@ import org.rsreu.library.databaseutil.api.LoginAPI;
 import java.io.IOException;
 import java.sql.SQLException;
 
+
 public class LoginCommand implements ActionCommand {
     private static final String PARAM_NAME_LOGIN = "login";
     private static final String PARAM_NAME_PASSWORD = "password";

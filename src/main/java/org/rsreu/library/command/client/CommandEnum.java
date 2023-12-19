@@ -1,27 +1,40 @@
 package org.rsreu.library.command.client;
 
-import org.rsreu.library.command.*;
+import org.rsreu.library.command.ActionCommand;
+import org.rsreu.library.command.LoginCommand;
+import org.rsreu.library.command.LogoutCommand;
 import org.rsreu.library.command.admin.*;
-import org.rsreu.library.command.reader.*;
 import org.rsreu.library.command.librarian.*;
+import org.rsreu.library.command.reader.ReaderDashboardCommand;
 
 public enum CommandEnum {
+    ADDNEWBOOKCOMMAND(new AddNewBookCommand()),
+    ADDNEWCOPYCOMMAND(new AddNewBookCommand()),
+    ADDUSERFORM(new AddUserFormCommand()),
+    ADMINDASHBOARD(new AdminDashboardCommand()),
+    CHANGEUSERSTATUSFORM(new ChangeUserStatusFormCommand()),
+    DELETEUSERBYID(new DeleteUserByIdCommand()),
+    DELETEUSERFORM(new DeleteUserFormCommand()),
+    INSERTUSERUPDATE(new InsertUserUpdateCommand()),
+    LIBRARIANDASHBOARD(new LibrarianDashboardCommand()),
     LOGIN(new LoginCommand()),
     LOGOUT(new LogoutCommand()),
-    USERDASHBOARD(new ReaderDashboardCommand()),
-    ADMINDASHBOARD(new AdminDashboardCommand()),
-    ADDUSERFORM(new AddUserFormCommand()),
-    SEARCHUSERS(new SearchUsersCommand()),
-    DELETEUSERFORM(new DeleteUserFormCommand()),
-    DELETEUSERBYID(new DeleteUserByIdCommand()),
-    CHANGEUSERSTATUSFORM(new ChangeUserStatusFormCommand()),
-    LIBRARIANDASHBOARD(new LibrarianDashboardCommand()),
-    USERUPDATE(new UserUpdateCommand()),
-
-    ADDNEWCOPYCOMMAND(new AddNewCopyCommand()),
 
     SEARCHBOOKCATALOGCOMMAND(new SearchBookCatalogCommand()),
-    INSERTUSERUPDATE(new InsertUserUpdateCommand());
+
+    SEARCHUSERS(new SearchUsersCommand()),
+    USERDASHBOARD(new ReaderDashboardCommand()),
+    ADDNEWAPGCOMMAND(new AddNewAPGCommand()),
+    SEARCHBOOKINVENTORYCOMMAND(new SearchBookInventoryCommand()),
+    CREATELOANCOMMAND(new CreateLoanCommand()),
+    DISPLAYBOOKDATACOMMAND(new DisplayBookDataCommand()),
+    INSERTPENALTYCOMMAND(new InsertPenaltyCommand()),
+    UPDATEBOOKDATACPMMAND(new UpdateBookDataCommand()),
+    UPDATELOANDATACOMMAND(new UpdateLoanDataCommand()),
+    UPDATEPENALTYDATACOMMAND(new UpdatePenaltyDataCommand()),
+    VIEWEDITLOANDATACOMMAND(new ViewEditLoanDataCommand()),
+    VIEWEDITPENALTYDATACOMMAND(new ViewEditPenaltyDataCommand()),
+    USERUPDATE(new UserUpdateCommand());
     private final ActionCommand command;
 
     CommandEnum(ActionCommand command) {
