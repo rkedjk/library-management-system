@@ -3,7 +3,7 @@ package org.rsreu.library.databaseutil.api.reader;
 import org.rsreu.library.databaseutil.DAO.BookValueDAO;
 import org.rsreu.library.databaseutil.DAO.reader.LoanDAO;
 import org.rsreu.library.databaseutil.DAO.reader.PenaltyDAO;
-import org.rsreu.library.databaseutil.DAO.librarian.BookInventoryDAO;
+import org.rsreu.library.databaseutil.DAO.reader.BookInventoryDAO;
 import org.rsreu.library.databaseutil.DAO.reader.BookCatalogDAO;
 import org.rsreu.library.databaseutil.OracleConnectionManager;
 import org.rsreu.library.databaseutil.entity.BookCatalog;
@@ -88,6 +88,20 @@ public class ReaderAPI {
             default:
                 throw new IllegalArgumentException("Invalid search type provided");
         }
+    }
+
+    public boolean createReservation(Loan loan) throws SQLException {
+        boolean loanCreated = loanDAO.createLoan(loan);
+
+        BookInventory bookInventory = bookInventoryDAO.getBookInventoryById(loan.getInventoryId());
+
+        // Update the fetched BookInventory object
+        if (bookInventory != null) {
+            bookInventoryDAO.updateBookInventory(bookInventory);
+            return true; // Reservation successful
+        }
+
+        return false; // Reservation failed due to inventory not found or other reasons
     }
 
     public void insertBookInventory(String location, String status, Long bookId) throws SQLException {

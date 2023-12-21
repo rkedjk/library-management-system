@@ -24,6 +24,7 @@ public enum CommandEnum {
     SEARCHBOOKSCOMMAND(new SearchBooksCommand()),
     SEARCHUSERS(new SearchUsersCommand()),
     USERDASHBOARD(new ReaderDashboardCommand()),
+    RESERVATIONCOMMAND(new ReservationCommand()),
     ADDNEWAPGCOMMAND(new AddNewAPGCommand()),
     SEARCHBOOKINVENTORYCOMMAND(new SearchBookInventoryCommand()),
     CREATELOANCOMMAND(new CreateLoanCommand()),

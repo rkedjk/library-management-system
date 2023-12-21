@@ -18,7 +18,6 @@
         <th>Genre</th>
         <th>Publisher</th>
         <th>Year Published</th>
-        <th>Available Copies</th>
         <!-- Add other relevant column headers -->
     </tr>
     </thead>
@@ -31,12 +30,6 @@
             <td>${book[4]}</td> <!-- Assuming index 4 for genre -->
             <td>${book[5]}</td> <!-- Assuming index 5 for publisher -->
             <td>${book[2]}</td> <!-- Assuming index 2 for year published -->
-            <td>
-                <c:forEach var="availableBook" items="${book[7]}">
-                    ${availableBook[6]} <!-- Assuming index 6 for the number of available copies -->
-                    <!-- Display other details of available copies as needed -->
-                </c:forEach>
-            </td>
             <!-- Add other relevant columns -->
         </tr>
     </c:forEach>

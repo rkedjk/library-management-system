@@ -29,7 +29,16 @@ public class ReaderDashboardCommand implements ActionCommand {
                     page = ConfigurationManager.getProperty("path.page.request_reservation");
                     break;
                 case "request_available_books":
-                    page = ConfigurationManager.getProperty("path.page.request_available_books");
+                    try {
+                        String status = "AVAILABLE"; // Status for available books
+                        List<Object[]> availableBooks = readerAPI.getNumBooksByStatus(status);
+                        request.setAttribute("availableBooks", availableBooks);
+                        page = ConfigurationManager.getProperty("path.page.request_available_books");
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                        // Handle SQL exception
+                        page = ConfigurationManager.getProperty("path.page.error");
+                    }
                     break;
                 case "reservation_history":
                     page = ConfigurationManager.getProperty("path.page.reservation_history");

@@ -22,14 +22,6 @@ public class SearchBooksCommand implements ActionCommand {
             ReaderAPI readerAPI = new ReaderAPI();
             List<Object> bookList = readerAPI.searchBookCatalog(searchType, searchValue);
 
-            // Fetching available book copies based on the obtained book list
-            // Here, assuming the book ID is available at index 0 of each object in the book list
-            for (Object book : bookList) {
-                Long bookId = (Long) ((Object[]) book)[0];
-                List<Object[]> availableBooks = readerAPI.getNumBooksById(bookId);
-                ((Object[]) book)[7] = availableBooks; // Assuming index 7 for available books in the array
-            }
-
             request.setAttribute("bookList", bookList);
             page = ConfigurationManager.getProperty("path.page.viewBookList");
         } catch (SQLException e) {
