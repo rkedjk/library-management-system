@@ -5,7 +5,7 @@ import org.rsreu.library.command.LoginCommand;
 import org.rsreu.library.command.LogoutCommand;
 import org.rsreu.library.command.admin.*;
 import org.rsreu.library.command.librarian.*;
-import org.rsreu.library.command.reader.ReaderDashboardCommand;
+import org.rsreu.library.command.reader.*;
 
 public enum CommandEnum {
     ADDNEWBOOKCOMMAND(new AddNewBookCommand()),
@@ -21,7 +21,7 @@ public enum CommandEnum {
     LOGOUT(new LogoutCommand()),
 
     SEARCHBOOKCATALOGCOMMAND(new SearchBookCatalogCommand()),
-
+    SEARCHBOOKSCOMMAND(new SearchBooksCommand()),
     SEARCHUSERS(new SearchUsersCommand()),
     USERDASHBOARD(new ReaderDashboardCommand()),
     ADDNEWAPGCOMMAND(new AddNewAPGCommand()),

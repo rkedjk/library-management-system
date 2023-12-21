@@ -18,4 +18,14 @@
         <location>/jsp/error/error.jsp</location>
     </error-page>
 
+    <filter>
+        <filter-name>UserStatusFilter</filter-name>
+        <filter-class>org.rsreu.library.filters.UserStatusFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>UserStatusFilter</filter-name>
+        <url-pattern>/controller/*</url-pattern> <!-- Adjust the URL pattern based on your needs -->
+    </filter-mapping>
+
 </web-app>

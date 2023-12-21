@@ -47,4 +47,22 @@ public class CredentialDAO {
         return user;
     }
 
+    public User getUserById(int userId) throws SQLException {
+        PreparedStatement statement = connection.prepareStatement(DatabaseManager.getProperty("query.admin.get_user_by_id"));
+        statement.setInt(1, userId);
+        ResultSet resultSet = statement.executeQuery();
+
+        User user = null;
+        if (resultSet.next()) {
+            user = new User();
+            user.setId(resultSet.getLong("ID"));
+            user.setType(resultSet.getString("TYPE"));
+            user.setLogin(resultSet.getString("LOGIN"));
+            user.setPassword(resultSet.getString("PASSWORD"));
+            user.setStatus(resultSet.getString("STATUS"));
+            user.setName(resultSet.getString("NAME"));
+        }
+
+        return user;
+    }
 }

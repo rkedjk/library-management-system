@@ -1,54 +1,29 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Search Books</title>
+    <title>Book Search</title>
+    <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
-<h2>Search Books</h2>
-<form name="searchForm" method="GET" action="searchController">
-    Search by:
-    <select name="searchType">
+<h2>Book Search</h2>
+<form name="searchBooks" action="controller" method="post">
+    <input type="hidden" name="command" value="searchBooksCommand">
+
+    <label for="searchType">Search By:</label>
+    <select name="searchType" id="searchType">
+        <option value="id">ID</option>
         <option value="name">Name</option>
-        <option value="author">Author</option>
         <option value="genre">Genre</option>
+        <option value="author">Author</option>
+        <option value="publisher">Publisher</option>
     </select>
-    <br/><br/>
-    Search Term:
-    <input type="text" name="searchTerm" value=""/>
-    <br/><br/>
-    <input type="submit" value="Search"/>
+    <br><br>
+
+    <input type="text" name="searchValue" id="searchValue">
+    <br><br>
+
+    <button type="submit" name="action" id="searchBooksBtn" value="Search" class="btn btn-success">Search</button><br>
 </form>
-
-<hr/>
-
-<h2>Search Results</h2>
-<!-- Placeholder for displaying the table of books -->
-<table border="1">
-    <thead>
-    <tr>
-        <th>Name</th>
-        <th>Author</th>
-        <th>Genre</th>
-        <!-- Add more columns as needed -->
-    </tr>
-    </thead>
-    <tbody>
-    <!-- Display book data dynamically here -->
-    <tr>
-        <td>Book 1 Name</td>
-        <td>Author 1</td>
-        <td>Genre 1</td>
-        <!-- Add more rows based on search results -->
-    </tr>
-    <tr>
-        <td>Book 2 Name</td>
-        <td>Author 2</td>
-        <td>Genre 2</td>
-        <!-- Add more rows based on search results -->
-    </tr>
-    <!-- Add more rows based on search results -->
-    </tbody>
-</table>
 </body>
 </html>

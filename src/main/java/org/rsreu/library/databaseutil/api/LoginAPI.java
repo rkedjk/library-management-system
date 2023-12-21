@@ -17,13 +17,13 @@ public class LoginAPI {
         return credentialDAO.getUserByLoginAndPassword(login, password) != null;
     }
 
-    public String getUserType(String login, String password) throws SQLException {
+    public User getUserByLoginAndPassword(String login, String password) throws SQLException {
         User user = credentialDAO.getUserByLoginAndPassword(login, password);
-        if (user != null) {
-            return user.getType();
-        }
-        return null;
+        return user;
     }
+    public User getUserById(int userId) throws SQLException {
+        return credentialDAO.getUserById(userId);
 
+    }
 
 }
