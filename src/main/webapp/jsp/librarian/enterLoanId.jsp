@@ -8,7 +8,7 @@
 <body>
 <h1>Enter Loan ID</h1>
 <form action="controller" method="post">
-    <input type="hidden" name="command" value="viewLoanDataCommand">
+    <input type="hidden" name="command" value="ViewLoanDataCommand">
     <label for="loanId">Loan ID:</label>
     <input type="text" id="loanId" name="loanId"><br><br>
     <input type="submit" value="View and Edit Loan Data">

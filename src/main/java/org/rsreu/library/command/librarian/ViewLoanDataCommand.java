@@ -1,10 +1,10 @@
-package org.rsreu.library.command;
+package org.rsreu.library.command.librarian;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.rsreu.library.databaseutil.api.librarian.LoanAPI;
 import org.rsreu.library.resource.ConfigurationManager;
-
+import org.rsreu.library.command.ActionCommand;
 import java.sql.SQLException;
 
 public class ViewLoanDataCommand implements ActionCommand {
