@@ -44,15 +44,40 @@ public class PenaltyDAO {
 
         return rowsUpdated > 0;
     }
-    public boolean deletePenaltyByIdAndReaderId(Long penaltyId, Long readerId) throws SQLException {
-        PreparedStatement statement = connection.prepareStatement(DatabaseManager.getProperty("query.librarian.delete_penalty_by_id_reader"));
-        statement.setLong(1, penaltyId);
-        statement.setLong(2, readerId);
+    public Penalty getPenaltyById(Long penaltyId) throws SQLException {
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        Penalty penalty = null;
 
-        int rowsDeleted = statement.executeUpdate();
+        try {
+            statement = connection.prepareStatement(DatabaseManager.getProperty("query.librarian.get_penalty_by_id"));
+            statement.setLong(1, penaltyId);
+            resultSet = statement.executeQuery();
 
-        return rowsDeleted > 0;
+            if (resultSet.next()) {
+                penalty = new Penalty();
+                penalty.setPenaltyId(resultSet.getLong("PENALTY_ID"));
+                penalty.setReaderId(resultSet.getLong("READER_ID"));
+                penalty.setValidity(resultSet.getInt("VALIDITY"));
+                penalty.setReason(resultSet.getString("REASON"));
+                penalty.setPenaltyDate(resultSet.getDate("PENALTY_DATE"));
+                penalty.setExpirationDate(resultSet.getDate("EXPIRATION_DATE"));
+                penalty.setLibrarianId(resultSet.getLong("LIBRARIAN_ID"));
+            }
+        } finally {
+            // Close resources in reverse order of creation to avoid potential leaks
+            if (resultSet != null) {
+                resultSet.close();
+            }
+            if (statement != null) {
+                statement.close();
+            }
+        }
+
+        return penalty;
     }
+
+
     public List<Penalty> getPenaltiesByReaderId(Long readerId) throws SQLException {
         List<Penalty> penaltyList = new ArrayList<>();
         PreparedStatement statement = connection.prepareStatement(DatabaseManager.getProperty("query.librarian.get_penalties_by_reader"));

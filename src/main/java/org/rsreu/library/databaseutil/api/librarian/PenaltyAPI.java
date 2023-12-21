@@ -37,8 +37,8 @@ public class PenaltyAPI {
         penaltyDAO.updatePenalty(penalty);
     }
 
-    public void deletePenaltyByIdReader(Long penaltyId, Long readerId) throws SQLException {
-        penaltyDAO.deletePenaltyByIdAndReaderId(penaltyId, readerId);
+    public Penalty getPenaltyById(Long penaltyId) throws SQLException {
+        return penaltyDAO.getPenaltyById(penaltyId);
     }
 
     public List<Penalty> getPenaltiesByReaderID(Long readerId) throws SQLException {

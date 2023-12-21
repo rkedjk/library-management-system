@@ -3,6 +3,7 @@ package org.rsreu.library.command.client;
 import org.rsreu.library.command.ActionCommand;
 import org.rsreu.library.command.LoginCommand;
 import org.rsreu.library.command.LogoutCommand;
+import org.rsreu.library.command.ViewLoanDataCommand;
 import org.rsreu.library.command.admin.*;
 import org.rsreu.library.command.librarian.*;
 import org.rsreu.library.command.reader.*;
@@ -26,11 +27,14 @@ public enum CommandEnum {
     SEARCHBOOKSINVENTORYCOMMAND(new SearchBooksInventoryCommand()),
     CREATELOANCOMMAND(new CreateLoanCommand()),
     DISPLAYBOOKDATACOMMAND(new DisplayBookDataCommand()),
-    INSERTPENALTYCOMMAND(new InsertPenaltyCommand()),
+    INSERTPENALTYDATACOMMAND(new InsertPenaltyCommand()),
+    VIEWPENALTYDATACOMMAND(new ViewPenaltyDataCommand()),
     UPDATEBOOKDATACPMMAND(new UpdateBookDataCommand()),
     UPDATELOANDATACOMMAND(new UpdateLoanDataCommand()),
+    VIEWLOANDATACOMMAND(new ViewLoanDataCommand()),
+
     UPDATEPENALTYDATACOMMAND(new UpdatePenaltyDataCommand()),
-    VIEWEDITPENALTYDATACOMMAND(new ViewEditPenaltyDataCommand()),
+    VIEWEDITPENALTYDATACOMMAND(new ViewPenaltyDataCommand()),
     INSERTBOOKINVENTORYCOMMAND(new InsertBookInventoryCommand()),
     UPDATEBOOKSTATUSCOMMAND(new UpdateBookStatusCommand()),
     INSERTBOOKCATALOGCOMMAND(new InsertBookCatalogCommand()),

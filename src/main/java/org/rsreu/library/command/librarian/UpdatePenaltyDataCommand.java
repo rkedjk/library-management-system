@@ -2,12 +2,12 @@ package org.rsreu.library.command.librarian;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.rsreu.library.databaseutil.api.librarian.PenaltyAPI;
 import org.rsreu.library.command.ActionCommand;
+import org.rsreu.library.databaseutil.api.librarian.PenaltyAPI;
 import org.rsreu.library.resource.ConfigurationManager;
 
+import java.sql.Date;
 import java.sql.SQLException;
-import java.sql.Date; // Using java.sql.Date directly
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
@@ -17,34 +17,33 @@ public class UpdatePenaltyDataCommand implements ActionCommand {
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         String page = null;
 
+        // Retrieve parameters from the request
         Long penaltyId = Long.parseLong(request.getParameter("penaltyId"));
         Long readerId = Long.parseLong(request.getParameter("readerId"));
-        String validity = String.valueOf(request.getParameter("validity"));
+        Integer validity = Integer.parseInt(request.getParameter("validity"));
         String reason = request.getParameter("reason");
         Date penaltyDate = null;
         Date expirationDate = null;
-        Long librarianId = Long.parseLong(request.getParameter("librarianId"));
-
         try {
-            // Parsing penaltyDate and expirationDate as java.sql.Date directly
             penaltyDate = Date.valueOf(request.getParameter("penaltyDate"));
             expirationDate = Date.valueOf(request.getParameter("expirationDate"));
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
-            // Handle date parsing error - redirect to an error page or display an error message
-            page = ConfigurationManager.getProperty("path.page.error"); // Redirect to error page
-            return page;
+            // Handle date parsing exception
         }
+        Long librarianId = Long.parseLong(request.getParameter("librarianId"));
 
-        PenaltyAPI penaltyAPI = new PenaltyAPI();
+        // Instantiate the PenaltyAPI (or service class)
+        PenaltyAPI penaltyAPI = new PenaltyAPI(); // Replace with your API or service class
+
         try {
-            penaltyAPI.updatePenalty(penaltyId, readerId, validity, reason, (java.sql.Date) penaltyDate, (java.sql.Date) expirationDate, librarianId);
-            // Redirect to success page or display success message
-            page = ConfigurationManager.getProperty("path.page.penaltyUpdateSuccess"); // Redirect to success page
+            penaltyAPI.updatePenalty(penaltyId, readerId, String.valueOf(validity), reason, penaltyDate, expirationDate, librarianId);
+            // Redirect to success page
+            page = ConfigurationManager.getProperty("path.page.penaltyDataUpdated");
         } catch (SQLException e) {
             e.printStackTrace();
-            // Handle penalty update error - redirect to an error page or display an error message
-            page = ConfigurationManager.getProperty("path.page.error"); // Redirect to error page
+            // Handle SQL exception
+            page = ConfigurationManager.getProperty("path.page.error");
         }
 
         return page;
