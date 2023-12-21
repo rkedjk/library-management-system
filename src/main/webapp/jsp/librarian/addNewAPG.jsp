@@ -1,31 +1,26 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Insert Data</title>
+    <title>Insert Entity</title>
 </head>
 <body>
-<h1>Insert Data</h1>
+<h1>Insert Entity</h1>
+<form action="controller" method="post">
+    <input type="hidden" name="command" value="insertEntityCommand">
 
-<h2>Insert Author</h2>
-<form name="insertAuthorForm" action="controller" method="post">
-    Author Name: <input type="text" name="authorName" required /><br />
-    <button type="submit" name="action" value="insertAuthor"></button>
-    <input type="hidden" name="command" value="addnewapgcommand"/>
-</form>
+    <!-- Input fields for inserting entity details -->
+    <label for="entityType">Entity Type:</label>
+    <select id="entityType" name="entityType">
+        <option value="author">Author</option>
+        <option value="genre">Genre</option>
+        <option value="publisher">Publisher</option>
+    </select><br><br>
 
-<h2>Insert Genre</h2>
-<form name="insertGenreForm" action="controller" method="post">
-    Genre Name: <input type="text" name="genreName" required /><br />
-    <button type="submit" name="action" value="insertGenre"></button>
-    <input type="hidden" name="command" value="addnewapgcommand"/>
-</form>
+    <label for="entityName">Entity Name:</label>
+    <input type="text" id="entityName" name="entityName"><br><br>
 
-<h2>Insert Publisher</h2>
-<form name="insertPublisherForm" action="controller" method="post">
-    Publisher Name: <input type="text" name="publisherName" required  /><br />
-    <button type="submit" name="action" value="insertPublisher"></button>
-    <input type="hidden" name="command" value="addnewapgcommand"/>
+    <input type="submit" value="Insert Entity">
 </form>
 </body>
 </html>

@@ -52,8 +52,6 @@
             <button type="submit" name="action" value="change_copy_status">Change Copy Status</button><br>
         </form>
 
-        <!-- List of Copies -->
-        <a href="list_of_copies">List of Copies</a>
     </div>
 
     <!-- Book Catalog Management -->
@@ -71,11 +69,6 @@
             <button type="submit" name="action" value="search_book">Search Book</button><br>
         </form>
 
-        <form name="updateBookDataForm" method="post" action="controller">
-            <!-- Update book data -->
-            <input type="hidden" name="command" value="librariandashboard"/>
-            <button type="submit" name="action" value="update_book_data">Update Book Data</button><br>
-        </form>
 
         <form name="addNewAPGForm" method="post" action="controller">
             <!-- Add new Author/Publisher/Genre -->
@@ -83,13 +76,6 @@
             <button type="submit" name="action" value="add_new_apg">Add New Author/Publisher/Genre</button><br>
         </form>
 
-        <!-- List of books -->
-        <a href="list_of_books">List of Books</a><br>
-
-        <!-- List of Authors/Publishers/Genres -->
-        <a href="list_of_authors">List of Authors</a><br>
-        <a href="list_of_publishers">List of Publishers</a><br>
-        <a href="list_of_genres">List of Genres</a>
     </div>
 
     <!-- Reader Management -->

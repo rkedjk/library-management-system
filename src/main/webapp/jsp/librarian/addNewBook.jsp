@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,13 +6,26 @@
 </head>
 <body>
 <h1>Insert Book Catalog</h1>
-<form name="insertBookCatalog" action="controller" method="post">
-    Title: <input type="text" name="title" required /><br />
-    Year Published: <input type="text" name="yearPublished" required /><br />
-    Author Name: <input type="text" name="authorName" required /><br />
-    Genre Name: <input type="text" name="genreName" required /><br />
-    Publisher Name: <input type="text" name="publisherName" required /><br />
-    <input type="submit" name="command" value="insertBookCatalog" />
+<form action="controller" method="post">
+    <input type="hidden" name="command" value="insertBookCatalogCommand">
+
+    <!-- Input fields for inserting book catalog details -->
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title"><br><br>
+
+    <label for="yearPublished">Year Published:</label>
+    <input type="number" id="yearPublished" name="yearPublished"><br><br>
+
+    <label for="authorName">Author Name:</label>
+    <input type="text" id="authorName" name="authorName"><br><br>
+
+    <label for="genreName">Genre Name:</label>
+    <input type="text" id="genreName" name="genreName"><br><br>
+
+    <label for="publisherName">Publisher Name:</label>
+    <input type="text" id="publisherName" name="publisherName"><br><br>
+
+    <input type="submit" value="Insert Book Catalog">
 </form>
 </body>
 </html>

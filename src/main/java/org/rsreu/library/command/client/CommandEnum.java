@@ -8,8 +8,6 @@ import org.rsreu.library.command.librarian.*;
 import org.rsreu.library.command.reader.*;
 
 public enum CommandEnum {
-    ADDNEWBOOKCOMMAND(new AddNewBookCommand()),
-    ADDNEWCOPYCOMMAND(new AddNewBookCommand()),
     ADDUSERFORM(new AddUserFormCommand()),
     ADMINDASHBOARD(new AdminDashboardCommand()),
     CHANGEUSERSTATUSFORM(new ChangeUserStatusFormCommand()),
@@ -25,16 +23,20 @@ public enum CommandEnum {
     SEARCHUSERS(new SearchUsersCommand()),
     USERDASHBOARD(new ReaderDashboardCommand()),
     RESERVATIONCOMMAND(new ReservationCommand()),
-    ADDNEWAPGCOMMAND(new AddNewAPGCommand()),
-    SEARCHBOOKINVENTORYCOMMAND(new SearchBookInventoryCommand()),
+    SEARCHBOOKSINVENTORYCOMMAND(new SearchBooksInventoryCommand()),
     CREATELOANCOMMAND(new CreateLoanCommand()),
     DISPLAYBOOKDATACOMMAND(new DisplayBookDataCommand()),
     INSERTPENALTYCOMMAND(new InsertPenaltyCommand()),
     UPDATEBOOKDATACPMMAND(new UpdateBookDataCommand()),
     UPDATELOANDATACOMMAND(new UpdateLoanDataCommand()),
     UPDATEPENALTYDATACOMMAND(new UpdatePenaltyDataCommand()),
-    VIEWEDITLOANDATACOMMAND(new ViewEditLoanDataCommand()),
     VIEWEDITPENALTYDATACOMMAND(new ViewEditPenaltyDataCommand()),
+    INSERTBOOKINVENTORYCOMMAND(new InsertBookInventoryCommand()),
+    UPDATEBOOKSTATUSCOMMAND(new UpdateBookStatusCommand()),
+    INSERTBOOKCATALOGCOMMAND(new InsertBookCatalogCommand()),
+    INSERTENTITYCOMMAND(new InsertEntityCommand()),
+    VIEWLOANSBYREADERCOMMAND(new ViewLoansByReaderCommand()),
+    VIEWPENALTIESBYREADERCOMMAND(new ViewPenaltiesByReaderCommand()),
     USERUPDATE(new UserUpdateCommand());
     private final ActionCommand command;
 

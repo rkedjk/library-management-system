@@ -2,7 +2,7 @@ package org.rsreu.library.command.librarian;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.rsreu.library.databaseutil.api.LoanAPI;
+import org.rsreu.library.databaseutil.api.librarian.LoanAPI;
 import org.rsreu.library.command.ActionCommand;
 import org.rsreu.library.resource.ConfigurationManager;
 

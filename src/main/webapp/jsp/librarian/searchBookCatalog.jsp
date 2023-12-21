@@ -7,6 +7,7 @@
 <body>
 <h1>Search Book Catalog</h1>
 <form name="searchBookCatalog" action="controller" method="post">
+    <input type="hidden" name="command" value="searchBookCatalogCommand">
     Search Type:
     <select name="searchType">
         <option value="id">ID</option>

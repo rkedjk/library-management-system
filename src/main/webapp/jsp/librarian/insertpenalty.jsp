@@ -1,19 +1,31 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Insert New Penalty</title>
+    <title>Insert Penalty</title>
 </head>
 <body>
-<h1>Insert New Penalty</h1>
-<form name="insertPenaltyForm" action="controller" method="post">
-    Reader ID: <input type="text" name="readerId" required /><br />
-    Validity: <input type="text" name="validity" required /><br />
-    Reason: <input type="text" name="reason" required /><br />
-    Penalty Date: <input type="date" name="penaltyDate" required /><br />
-    Expiration Date: <input type="date" name="expirationDate" required /><br />
-    Librarian ID: <input type="text" name="librarianId" required /><br />
-    <input type="submit" name="command" value="insertPenalty" />
+<h1>Insert Penalty</h1>
+<form action="controller" method="post">
+    <input type="hidden" name="command" value="insertPenaltyCommand">
+
+    <!-- Input fields for penalty details -->
+    <label for="readerId">Reader ID:</label>
+    <input type="text" id="readerId" name="readerId"><br><br>
+
+    <label for="validity">Validity:</label>
+    <input type="text" id="validity" name="validity"><br><br>
+
+    <label for="reason">Reason:</label>
+    <input type="text" id="reason" name="reason"><br><br>
+
+    <label for="penaltyDate">Penalty Date:</label>
+    <input type="text" id="penaltyDate" name="penaltyDate" placeholder="YYYY-MM-DD"><br><br>
+
+    <label for="expirationDate">Expiration Date:</label>
+    <input type="text" id="expirationDate" name="expirationDate" placeholder="YYYY-MM-DD"><br><br>
+
+    <input type="submit" value="Insert Penalty">
 </form>
 </body>
 </html>

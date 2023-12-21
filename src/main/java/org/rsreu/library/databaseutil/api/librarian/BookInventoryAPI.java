@@ -46,13 +46,13 @@ public class BookInventoryAPI {
         bookInventory.setStatus(status);
         bookInventoryDAO.insertBookInventory(bookInventory);
     }
-
+    public void updateBookStatus(String status, Long inventoryId) throws SQLException {
+        bookInventoryDAO.updateBookStatus(inventoryId,status);
+    }
     public BookInventory getBookInventoryById(Long inventoryId) throws SQLException {
         return bookInventoryDAO.getBookInventoryById(inventoryId);
     }
 
-    public void updateBookStatus(String status, Long inventoryId) throws SQLException {
-        bookInventoryDAO.updateBookStatus(inventoryId,status);
-    }
+
 
 }

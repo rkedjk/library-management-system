@@ -30,7 +30,7 @@ public class BookCatalogAPI {
     }
 
     public List<Object> searchBookCatalog(String searchType, String searchValue) throws SQLException {
-        List<BookCatalog> bookCatalogList = null;
+        List<BookCatalog> bookCatalogList = new ArrayList<>();
         switch (searchType.toLowerCase()) {
             case "id":
                 Long bookId = Long.parseLong(searchValue);
@@ -116,21 +116,16 @@ public class BookCatalogAPI {
     }
 
     public void insertAuthor(String authorName) throws SQLException {
-        Author author = new Author();
-        author.setAuthorName(authorName);
-        authorDAO.insertAuthor(String.valueOf(author));
+        authorDAO.insertAuthor(String.valueOf(authorName));
     }
 
     public void insertGenre(String genreName) throws SQLException {
-        Genre genre = new Genre();
-        genre.setGenreName(genreName);
-        genreDAO.insertGenre(String.valueOf(genre));
+        genreDAO.insertGenre(String.valueOf(genreName));
     }
 
     public void insertPublisher(String publisherName) throws SQLException {
-        Publisher publisher = new Publisher();
-        publisher.setPublisherName(publisherName);
-        publisherDAO.insertPublisher(String.valueOf(publisher));
+
+        publisherDAO.insertPublisher(String.valueOf(publisherName));
     }
 
     public void updateAuthorName(String newAuthorName, String oldAuthorName) throws SQLException {

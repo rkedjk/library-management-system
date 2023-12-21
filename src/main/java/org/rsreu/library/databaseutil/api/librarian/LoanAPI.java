@@ -1,4 +1,4 @@
-package org.rsreu.library.databaseutil.api;
+package org.rsreu.library.databaseutil.api.librarian;
 
 import org.rsreu.library.databaseutil.DAO.librarian.LoanDAO;
 import org.rsreu.library.databaseutil.entity.Loan;
