@@ -33,11 +33,11 @@ public class InsertPenaltyCommand implements ActionCommand {
         try {
             libraryManagementAPI.insertPenalty(readerId, validity, reason, penaltyDate, expirationDate, librarianId);
             // Penalty inserted successfully
-            page = ConfigurationManager.getProperty("path.page.penaltyInserted"); // Redirect to success page
+            page = ConfigurationManager.getProperty("path.page.success"); // Redirect to success page
         } catch (SQLException e) {
             e.printStackTrace();
             // Handle SQL exception
-            page = ConfigurationManager.getProperty("path.page.penaltyInsertError"); // Redirect to error page
+            page = ConfigurationManager.getProperty("path.page.error"); // Redirect to error page
         }
 
         return page;

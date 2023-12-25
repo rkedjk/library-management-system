@@ -28,7 +28,7 @@ public class ViewLoansByReaderCommand implements ActionCommand {
         } catch (SQLException e) {
             e.printStackTrace();
             // Handle SQL exception
-            page = ConfigurationManager.getProperty("path.page.viewLoansByReaderError"); // Redirect to error page
+            page = ConfigurationManager.getProperty("path.page.error"); // Redirect to error page
         }
 
         return page;

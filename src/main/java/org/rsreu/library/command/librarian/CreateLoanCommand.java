@@ -29,11 +29,11 @@ public class CreateLoanCommand implements ActionCommand {
         try {
             libraryManagementAPI.createLoan(inventoryId, readerId, loanDate, dueDate, status);
             // Loan created successfully
-            page = ConfigurationManager.getProperty("path.page.loanCreated"); // Redirect to success page
+            page = ConfigurationManager.getProperty("path.page.success"); // Redirect to success page
         } catch (SQLException e) {
             e.printStackTrace();
             // Handle SQL exception
-            page = ConfigurationManager.getProperty("path.page.loanCreateError"); // Redirect to error page
+            page = ConfigurationManager.getProperty("path.page.error"); // Redirect to error page
         }
 
         return page;

@@ -41,11 +41,6 @@
             <button type="submit" name="action" value="search_copy">Search Copy</button><br>
         </form>
 
-        <form name="updateCopyDataForm" method="post" action="controller">
-            <!-- Update copy data -->
-            <input type="hidden" name="command" value="librariandashboard"/>
-            <button type="submit" name="action" value="update_copy_data">Update Copy Data</button><br>
-        </form>
 
         <form name="changeCopyStatusForm" method="post" action="controller">
             <!-- Change Copy status -->

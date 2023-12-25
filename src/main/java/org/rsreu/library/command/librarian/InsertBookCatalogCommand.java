@@ -27,11 +27,11 @@ public class InsertBookCatalogCommand implements ActionCommand {
         try {
             bookCatalogAPI.insertBookCatalog(title, yearPublished, authorName, genreName, publisherName);
             // Book catalog inserted successfully
-            page = ConfigurationManager.getProperty("path.page.bookCatalogInserted"); // Redirect to success page
+            page = ConfigurationManager.getProperty("path.page.success"); // Redirect to success page
         } catch (SQLException e) {
             e.printStackTrace();
             // Handle SQL exception
-            page = ConfigurationManager.getProperty("path.page.bookCatalogInsertError"); // Redirect to error page
+            page = ConfigurationManager.getProperty("path.page.error"); // Redirect to error page
         }
 
         return page;

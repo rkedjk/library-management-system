@@ -1,22 +1,37 @@
 package org.rsreu.library.databaseutil.DAO.librarian;
 
+import org.rsreu.library.databaseutil.entity.BookCatalog;
+import org.rsreu.library.resource.DatabaseManager;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.ArrayList;
-import org.rsreu.library.databaseutil.entity.BookCatalog;
-import org.rsreu.library.resource.DatabaseManager;
+import java.util.List;
 
+/**
+ * The BookCatalogDAO class provides Data Access Object methods to interact with book catalog-related database operations.
+ */
 public class BookCatalogDAO {
 
     private final Connection connection;
 
+    /**
+     * Constructor for BookCatalogDAO.
+     *
+     * @param connection The connection object to the database
+     */
     public BookCatalogDAO(Connection connection) {
         this.connection = connection;
     }
-
+    /**
+     * Inserts a new book catalog entry into the database.
+     *
+     * @param bookCatalog The book catalog object to be inserted
+     * @return True if insertion is successful, false otherwise
+     * @throws SQLException If an SQL exception occurs
+     */
     public boolean insertBookCatalog(BookCatalog bookCatalog) throws SQLException {
         PreparedStatement statement = connection.prepareStatement(DatabaseManager.getProperty("query.librarian.insert_book_catalog"));
 
@@ -30,6 +45,13 @@ public class BookCatalogDAO {
 
         return rowsInserted > 0;
     }
+    /**
+     * Retrieves a book catalog entry by its ID from the database.
+     *
+     * @param bookId The ID of the book to retrieve
+     * @return The book catalog entry corresponding to the given ID
+     * @throws SQLException If an SQL exception occurs
+     */
     public BookCatalog getBookCatalogById(Long bookId) throws SQLException {
         PreparedStatement statement = connection.prepareStatement(DatabaseManager.getProperty("query.librarian.get_book_catalog_by_id"));
         statement.setLong(1, bookId);
@@ -47,6 +69,13 @@ public class BookCatalogDAO {
 
         return bookCatalog;
     }
+    /**
+     * Updates a book catalog entry in the database.
+     *
+     * @param bookCatalog The book catalog object with updated information
+     * @return True if the update is successful, false otherwise
+     * @throws SQLException If an SQL exception occurs
+     */
     public boolean updateBookCatalog(BookCatalog bookCatalog) throws SQLException {
         PreparedStatement statement = connection.prepareStatement(DatabaseManager.getProperty("query.librarian.update_book_catalog"));
 
@@ -61,7 +90,13 @@ public class BookCatalogDAO {
 
         return rowsUpdated > 0;
     }
-
+    /**
+     * Deletes a book catalog entry from the database based on its ID.
+     *
+     * @param bookId The ID of the book catalog entry to be deleted
+     * @return True if deletion is successful, false otherwise
+     * @throws SQLException If an SQL exception occurs
+     */
     public boolean deleteBookCatalogById(Long bookId) throws SQLException {
         PreparedStatement statement = connection.prepareStatement(DatabaseManager.getProperty("query.librarian.delete_book_catalog_by_id"));
         statement.setLong(1, bookId);
@@ -70,6 +105,13 @@ public class BookCatalogDAO {
 
         return rowsDeleted > 0;
     }
+    /**
+     * Retrieves a list of book catalog entries based on a specific publisher.
+     *
+     * @param publisherName The name of the publisher to search for
+     * @return A list of book catalog entries matching the specified publisher
+     * @throws SQLException If an SQL exception occurs
+     */
     public List<BookCatalog> getBooksByPublisher(String publisherName) throws SQLException {
         List<BookCatalog> bookList = new ArrayList<>();
         PreparedStatement statement = connection.prepareStatement(DatabaseManager.getProperty("query.librarian.get_books_by_publisher"));
@@ -90,6 +132,13 @@ public class BookCatalogDAO {
 
         return bookList;
     }
+    /**
+     * Retrieves a list of book catalog entries based on a specific year of publication.
+     *
+     * @param yearPublished The year of publication to search for
+     * @return A list of book catalog entries published in the specified year
+     * @throws SQLException If an SQL exception occurs
+     */
     public List<BookCatalog> getBooksByYearPublished(int yearPublished) throws SQLException {
         List<BookCatalog> bookList = new ArrayList<>();
         PreparedStatement statement = connection.prepareStatement(DatabaseManager.getProperty("query.librarian.get_books_by_year_published"));
@@ -110,6 +159,13 @@ public class BookCatalogDAO {
 
         return bookList;
     }
+    /**
+     * Retrieves a list of book catalog entries based on a specific genre.
+     *
+     * @param genreName The name of the genre to search for
+     * @return A list of book catalog entries belonging to the specified genre
+     * @throws SQLException If an SQL exception occurs
+     */
     public List<BookCatalog> getBooksByGenre(String genreName) throws SQLException {
         List<BookCatalog> bookList = new ArrayList<>();
         PreparedStatement statement = connection.prepareStatement(DatabaseManager.getProperty("query.librarian.get_books_by_genre"));
@@ -130,6 +186,13 @@ public class BookCatalogDAO {
 
         return bookList;
     }
+    /**
+     * Retrieves a list of book catalog entries based on a specific author's name.
+     *
+     * @param authorName The name of the author to search for
+     * @return A list of book catalog entries authored by the specified author
+     * @throws SQLException If an SQL exception occurs
+     */
     public List<BookCatalog> getBooksByAuthor(String authorName) throws SQLException {
         List<BookCatalog> bookList = new ArrayList<>();
         PreparedStatement statement = connection.prepareStatement(DatabaseManager.getProperty("query.librarian.get_books_by_author"));
@@ -150,6 +213,13 @@ public class BookCatalogDAO {
 
         return bookList;
     }
+    /**
+     * Searches for book catalog entries based on a specified title keyword.
+     *
+     * @param title The keyword to search for in book titles
+     * @return A list of book catalog entries containing the specified title keyword
+     * @throws SQLException If an SQL exception occurs
+     */
     public List<BookCatalog> searchBooksByTitle(String title) throws SQLException {
         List<BookCatalog> bookList = new ArrayList<>();
         PreparedStatement statement = connection.prepareStatement(DatabaseManager.getProperty("query.librarian.search_books_by_title"));
@@ -170,6 +240,12 @@ public class BookCatalogDAO {
 
         return bookList;
     }
+    /**
+     * Retrieves a list of all book catalog entries from the database.
+     *
+     * @return A list containing all book catalog entries
+     * @throws SQLException If an SQL exception occurs
+     */
     public List<BookCatalog> getAllBookCatalog() throws SQLException {
         List<BookCatalog> bookList = new ArrayList<>();
         PreparedStatement statement = connection.prepareStatement(DatabaseManager.getProperty("query.librarian.get_all_book_catalog"));

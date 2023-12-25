@@ -27,7 +27,7 @@ public class UpdateBookDataCommand implements ActionCommand {
         try {
             bookCatalogAPI.updateBookCatalog(title, yearPublished, authorName, genreName, publisherName, bookId);
             // Redirect to success page or display success message
-            page = ConfigurationManager.getProperty("path.page.updateSuccess"); // Redirect to success page
+            page = ConfigurationManager.getProperty("path.page.success"); // Redirect to success page
         } catch (SQLException e) {
             // Handle exception, redirect to an error page, or display an error message
             e.printStackTrace();

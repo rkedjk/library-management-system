@@ -35,7 +35,7 @@ public class SearchUsersCommand implements ActionCommand {
             e.printStackTrace();
             // Optionally, set an error attribute or redirect to an error page
             request.setAttribute("error", "An error occurred while processing your request.");
-            page = "error.jsp"; // Set the error page or any other appropriate page
+            page = "path.page.error"; // Set the error page or any other appropriate page
         }
 
         return page;

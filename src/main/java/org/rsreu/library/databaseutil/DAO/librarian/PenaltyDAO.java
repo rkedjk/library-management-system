@@ -15,6 +15,13 @@ public class PenaltyDAO {
     public PenaltyDAO(Connection connection) {
         this.connection = connection;
     }
+    /**
+     * Inserts a penalty entry into the database.
+     *
+     * @param penalty The Penalty object to be inserted
+     * @return True if the insertion is successful, false otherwise
+     * @throws SQLException If an SQL exception occurs
+     */
     public boolean insertPenalty(Penalty penalty) throws SQLException {
         PreparedStatement statement = connection.prepareStatement(DatabaseManager.getProperty("query.librarian.insert_penalty"));
 
@@ -29,6 +36,13 @@ public class PenaltyDAO {
 
         return rowsInserted > 0;
     }
+    /**
+     * Updates an existing penalty entry in the database.
+     *
+     * @param penalty The Penalty object containing updated information
+     * @return True if the update is successful, false otherwise
+     * @throws SQLException If an SQL exception occurs
+     */
     public boolean updatePenalty(Penalty penalty) throws SQLException {
         PreparedStatement statement = connection.prepareStatement(DatabaseManager.getProperty("query.librarian.update_penalty"));
 
@@ -44,6 +58,13 @@ public class PenaltyDAO {
 
         return rowsUpdated > 0;
     }
+    /**
+     * Retrieves a penalty by its ID.
+     *
+     * @param penaltyId The ID of the penalty to be retrieved
+     * @return The Penalty object matching the specified ID, or null if not found
+     * @throws SQLException If an SQL exception occurs
+     */
     public Penalty getPenaltyById(Long penaltyId) throws SQLException {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
@@ -77,7 +98,13 @@ public class PenaltyDAO {
         return penalty;
     }
 
-
+    /**
+     * Retrieves penalties by reader ID.
+     *
+     * @param readerId The ID of the reader
+     * @return A list of Penalty objects associated with the specified reader ID
+     * @throws SQLException If an SQL exception occurs
+     */
     public List<Penalty> getPenaltiesByReaderId(Long readerId) throws SQLException {
         List<Penalty> penaltyList = new ArrayList<>();
         PreparedStatement statement = connection.prepareStatement(DatabaseManager.getProperty("query.librarian.get_penalties_by_reader"));
@@ -99,6 +126,13 @@ public class PenaltyDAO {
 
         return penaltyList;
     }
+    /**
+     * Retrieves penalties expiring by a given date.
+     *
+     * @param currentDate The date used to determine expiring penalties
+     * @return A list of Penalty objects that are expiring based on the specified date
+     * @throws SQLException If an SQL exception occurs
+     */
     public List<Penalty> getPenaltiesExpiringByDate(Date currentDate) throws SQLException {
         List<Penalty> penaltyList = new ArrayList<>();
         PreparedStatement statement = connection.prepareStatement(DatabaseManager.getProperty("query.librarian.get_penalties_expiring_by_date"));
@@ -120,7 +154,13 @@ public class PenaltyDAO {
 
         return penaltyList;
     }
-
+    /**
+     * Retrieves penalties by librarian ID.
+     *
+     * @param librarianId The ID of the librarian
+     * @return A list of Penalty objects associated with the specified librarian ID
+     * @throws SQLException If an SQL exception occurs
+     */
     public List<Penalty> getPenaltiesByLibrarianId(Long librarianId) throws SQLException {
             List<Penalty> penaltyList = new ArrayList<>();
             PreparedStatement statement = connection.prepareStatement(DatabaseManager.getProperty("query.librarian.get_penalties_by_librarian"));
@@ -142,6 +182,15 @@ public class PenaltyDAO {
 
             return penaltyList;
         }
+    /**
+     * Updates penalty validity and expiration date.
+     *
+     * @param validity       The new validity status of the penalty
+     * @param expirationDate The new expiration date of the penalty
+     * @param penaltyId      The ID of the penalty to be updated
+     * @return True if the update is successful, false otherwise
+     * @throws SQLException If an SQL exception occurs
+     */
     public boolean updatePenaltyValidityExpiration(String validity, Date expirationDate, Long penaltyId) throws SQLException {
         PreparedStatement statement = connection.prepareStatement(DatabaseManager.getProperty("query.librarian.update_penalty_validity_expiration"));
 

@@ -29,7 +29,7 @@ public class UpdateLoanDataCommand implements ActionCommand {
         try {
             loanAPI.updateLoan(loanId,inventoryId,readerId,loanDate,dueDate,status,returnDate); // Update loan data
             // Redirect to a success page
-            page = ConfigurationManager.getProperty("path.page.loanDataUpdated");
+            page = ConfigurationManager.getProperty("path.page.success");
         } catch (SQLException e) {
             e.printStackTrace();
             // Handle exception and redirect to an error page

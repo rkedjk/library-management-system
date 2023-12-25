@@ -56,7 +56,7 @@ public class UserManagementAPI {
 
     public Object getUserById(long userId) throws SQLException {
         User user = userDAO.getUserById(userId);
-        Object convertedUser = (Object) user; // Convert User to Object
+        Object convertedUser = user; // Convert User to Object
         return convertedUser;
     }
     public boolean insertUser(String type, String login, String password, String status, String name) throws SQLException {

@@ -24,11 +24,11 @@ public class UpdateBookStatusCommand implements ActionCommand {
         try {
             bookInventoryAPI.updateBookStatus(status, inventoryId);
             // Book status updated successfully
-            page = ConfigurationManager.getProperty("path.page.bookStatusUpdated"); // Redirect to success page
+            page = ConfigurationManager.getProperty("path.page.success"); // Redirect to success page
         } catch (SQLException e) {
             e.printStackTrace();
             // Handle SQL exception
-            page = ConfigurationManager.getProperty("path.page.bookStatusUpdateError"); // Redirect to error page
+            page = ConfigurationManager.getProperty("path.page.error"); // Redirect to error page
         }
 
         return page;

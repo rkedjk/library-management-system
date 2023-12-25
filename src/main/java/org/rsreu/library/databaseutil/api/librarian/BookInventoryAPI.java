@@ -20,7 +20,7 @@ public class BookInventoryAPI {
             case "inventory_id":
                 Long inventoryId = Long.valueOf(searchValue);
                 BookInventory inventoryById = bookInventoryDAO.getBookInventoryById(inventoryId);
-                return Collections.singletonList((Object) inventoryById);
+                return Collections.singletonList(inventoryById);
             case "status":
                 switch (searchValue.toUpperCase()) {
                     case "AVAILABLE":

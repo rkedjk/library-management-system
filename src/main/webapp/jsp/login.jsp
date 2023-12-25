@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
+<%@ include file="header.jsp" %>
 <head>
     <title>Login</title>
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 <form name="loginForm" method="POST" action="controller">
@@ -22,4 +23,5 @@
 </form>
 <hr/>
 </body>
+<%@ include file="footer.jsp" %>
 </html>

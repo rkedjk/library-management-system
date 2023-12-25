@@ -27,7 +27,7 @@ public class SearchBooksCommand implements ActionCommand {
         } catch (SQLException e) {
             e.printStackTrace();
             request.setAttribute("error", "An error occurred while processing your request.");
-            page = "error.jsp";
+            page = "path.page.error";
         }
 
         return page;

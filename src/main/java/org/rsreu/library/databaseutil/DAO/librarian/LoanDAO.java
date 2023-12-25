@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.sql.Date;
 import org.rsreu.library.databaseutil.entity.Loan;
 import org.rsreu.library.resource.DatabaseManager;
+
 public class LoanDAO {
 
     private final Connection connection;
@@ -16,6 +17,14 @@ public class LoanDAO {
     public LoanDAO(Connection connection) {
         this.connection = connection;
     }
+
+    /**
+     * Creates a new loan entry in the database.
+     *
+     * @param loan The Loan object to be inserted
+     * @return True if the insertion is successful, false otherwise
+     * @throws SQLException If an SQL exception occurs
+     */
     public boolean createLoan(Loan loan) throws SQLException {
         PreparedStatement statement = connection.prepareStatement(DatabaseManager.getProperty("query.librarian.create_loan"));
 
@@ -29,14 +38,13 @@ public class LoanDAO {
 
         return rowsInserted > 0;
     }
-    public boolean updateInventoryStatusToIssued(Long inventoryId) throws SQLException {
-        PreparedStatement statement = connection.prepareStatement(DatabaseManager.getProperty("query.librarian.update_inventory_status_issued"));
-        statement.setLong(1, inventoryId);
-
-        int rowsUpdated = statement.executeUpdate();
-
-        return rowsUpdated > 0;
-    }
+    /**
+     * Retrieves a loan by its ID.
+     *
+     * @param loanId The ID of the loan to be retrieved
+     * @return The Loan object matching the specified ID, or null if not found
+     * @throws SQLException If an SQL exception occurs
+     */
     public Loan getLoanById(Long loanId) throws SQLException {
         PreparedStatement statement = connection.prepareStatement(DatabaseManager.getProperty("query.librarian.get_loan_by_id"));
         statement.setLong(1, loanId);
@@ -54,6 +62,14 @@ public class LoanDAO {
 
         return loan;
     }
+
+    /**
+     * Updates an existing loan entry in the database.
+     *
+     * @param loan The Loan object containing updated information
+     * @return True if the update is successful, false otherwise
+     * @throws SQLException If an SQL exception occurs
+     */
     public boolean updateLoan(Loan loan) throws SQLException {
         PreparedStatement statement = connection.prepareStatement(DatabaseManager.getProperty("query.librarian.update_loan"));
 
@@ -69,6 +85,13 @@ public class LoanDAO {
 
         return rowsUpdated > 0;
     }
+    /**
+     * Retrieves loans by reader ID.
+     *
+     * @param readerId The ID of the reader
+     * @return A list of Loan objects associated with the specified reader ID
+     * @throws SQLException If an SQL exception occurs
+     */
     public List<Loan> getLoansByReaderId(Long readerId) throws SQLException {
         List<Loan> loanList = new ArrayList<>();
         PreparedStatement statement = connection.prepareStatement(DatabaseManager.getProperty("query.librarian.get_loans_by_reader"));
@@ -90,6 +113,13 @@ public class LoanDAO {
 
         return loanList;
     }
+    /**
+     * Retrieves loans by status.
+     *
+     * @param status The status of the loans to be retrieved
+     * @return A list of Loan objects matching the specified status
+     * @throws SQLException If an SQL exception occurs
+     */
     public List<Loan> getLoansByStatus(String status) throws SQLException {
         List<Loan> loanList = new ArrayList<>();
         PreparedStatement statement = connection.prepareStatement(DatabaseManager.getProperty("query.librarian.get_loans_by_status"));
@@ -111,6 +141,13 @@ public class LoanDAO {
 
         return loanList;
     }
+    /**
+     * Retrieves overdue loans by a given date.
+     *
+     * @param currentDate The date used to determine overdue loans
+     * @return A list of Loan objects that are overdue based on the specified date
+     * @throws SQLException If an SQL exception occurs
+     */
     public List<Loan> getOverdueLoansByDate(Date currentDate) throws SQLException {
         List<Loan> loanList = new ArrayList<>();
         PreparedStatement statement = connection.prepareStatement(DatabaseManager.getProperty("query.librarian.get_overdue_loans_by_date"));

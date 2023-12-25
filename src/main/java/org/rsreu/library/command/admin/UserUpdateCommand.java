@@ -27,10 +27,10 @@ public class UserUpdateCommand implements ActionCommand {
         try {
             boolean isSuccess = userManagementAPI.updateUser(userId, type, login, password, status, name);
             if (isSuccess) {
-                page = ConfigurationManager.getProperty("path.page.successQuery");
+                page = ConfigurationManager.getProperty("path.page.success");
             } else {
                 // Handle update failure, redirect to an error page or the update form again
-                page = ConfigurationManager.getProperty("path.page.userUpdateForm");
+                page = ConfigurationManager.getProperty("path.page.error");
             }
 
         }

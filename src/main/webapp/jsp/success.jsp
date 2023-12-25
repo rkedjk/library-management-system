@@ -1,14 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
-<%@ include file="../header.jsp" %>
+<%@ include file="header.jsp" %>
 <head>
-    <title>Error Page</title>
+    <title>Success Page</title>
     <link rel="stylesheet" type="text/css" href="../../css/style.css">
     <style>
+
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f7f7f7;
+            background-color: #f0f0f0;
             margin: 0;
             padding: 0;
             display: flex;
@@ -18,7 +19,7 @@
             text-align: center;
             color: #333;
         }
-        .error-container {
+        .success-container {
             max-width: 600px;
             padding: 40px;
             background-color: #fff;
@@ -28,7 +29,7 @@
         h1 {
             font-size: 2.5em;
             margin-bottom: 20px;
-            color: #e74c3c;
+            color: #27ae60;
         }
         p {
             font-size: 1.2em;
@@ -37,13 +38,13 @@
     </style>
 </head>
 <body>
-<div class="error-container">
-    <h1>Oops! Something went wrong.</h1>
-    <p>We apologize, but an error occurred.</p>
+<div class="success-container">
+    <h1>Success!</h1>
+    <p>Your action was completed successfully.</p>
 
 </div>
 
-<%@ include file="../footer.jsp" %>
+<%@ include file="footer.jsp" %>
 
 </body>
 </html>

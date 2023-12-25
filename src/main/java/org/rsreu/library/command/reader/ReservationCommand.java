@@ -48,17 +48,17 @@ public class ReservationCommand implements ActionCommand {
             if (reservationSuccess) {
                 // Reservation successful
                 // You can redirect to a success page or set a success message attribute
-                page = "reservation_success.jsp";
+                page = "path.page.success";
             } else {
                 // Reservation failed
                 // You can redirect to an error page or set an error message attribute
-                page = "reservation_error.jsp";
+                page = "path.page.error";
             }
         } catch (SQLException e) {
             e.printStackTrace();
             // Handle SQL exception
             // Redirect to an error page or set an error message attribute
-            page = "reservation_error.jsp";
+            page = "path.page.error";
         }
 
         return page;

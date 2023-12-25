@@ -22,7 +22,9 @@
         <filter-name>UserStatusFilter</filter-name>
         <filter-class>org.rsreu.library.filters.UserStatusFilter</filter-class>
     </filter>
-
+    <session-config>
+        <session-timeout>30</session-timeout> <!-- время жизни сессии в минутах -->
+    </session-config>
     <filter-mapping>
         <filter-name>UserStatusFilter</filter-name>
         <url-pattern>/controller/*</url-pattern> <!-- Adjust the URL pattern based on your needs -->

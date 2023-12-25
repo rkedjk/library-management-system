@@ -39,7 +39,7 @@ public class UpdatePenaltyDataCommand implements ActionCommand {
         try {
             penaltyAPI.updatePenalty(penaltyId, readerId, String.valueOf(validity), reason, penaltyDate, expirationDate, librarianId);
             // Redirect to success page
-            page = ConfigurationManager.getProperty("path.page.penaltyDataUpdated");
+            page = ConfigurationManager.getProperty("path.page.success");
         } catch (SQLException e) {
             e.printStackTrace();
             // Handle SQL exception

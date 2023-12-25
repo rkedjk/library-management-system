@@ -71,7 +71,7 @@ public class ReaderAPI {
             case "inventory_id":
                 Long inventoryId = Long.valueOf(searchValue);
                 BookInventory inventoryById = bookInventoryDAO.getBookInventoryById(inventoryId);
-                return Collections.singletonList((Object) inventoryById);
+                return Collections.singletonList(inventoryById);
             case "status":
                 switch (searchValue.toUpperCase()) {
                     case "AVAILABLE":
@@ -142,7 +142,7 @@ public class ReaderAPI {
 
         // Converting Loan objects to Object type
         for (Loan loan : loans) {
-            loanList.add((Object) loan);
+            loanList.add(loan);
         }
 
         return loanList;
@@ -153,7 +153,7 @@ public class ReaderAPI {
 
         // Converting Penalty objects to Object type
         for (Penalty penalty : penalties) {
-            penaltyList.add((Object) penalty);
+            penaltyList.add(penalty);
         }
 
         return penaltyList;

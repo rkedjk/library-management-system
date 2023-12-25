@@ -31,6 +31,8 @@ public class LoginCommand implements ActionCommand {
 
             if (user != null) {
                 HttpSession session = request.getSession();
+                int sessionTimeoutSeconds = 1800; // 30 минут * 60 секунд
+                session.setMaxInactiveInterval(sessionTimeoutSeconds);
                 session.setAttribute("user", user);
                 session.setAttribute("isAuthorized","True");
                 switch (user.getType()) {

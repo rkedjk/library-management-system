@@ -22,10 +22,10 @@ public class DeleteUserFormCommand implements ActionCommand {
         try {
             boolean isDeleted = userManagementAPI.deleteUserById(userId);
             if (isDeleted) {
-                page = ConfigurationManager.getProperty("path.page.successQuery");
+                page = ConfigurationManager.getProperty("path.page.success");
             } else {
                 // Handle deletion failure, redirect to an error page or confirmation form again
-                page = ConfigurationManager.getProperty("path.page.confirmDeleteUser");
+                page = ConfigurationManager.getProperty("path.page.error");
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

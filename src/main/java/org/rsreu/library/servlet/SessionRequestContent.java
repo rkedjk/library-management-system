@@ -9,9 +9,9 @@ import java.util.HashMap;
 
 public class SessionRequestContent {
 
-    private Map<String, Object> requestAttributes;
-    private Map<String, String[]> requestParameters;
-    private Map<String, Object> sessionAttributes;
+    private final Map<String, Object> requestAttributes;
+    private final Map<String, String[]> requestParameters;
+    private final Map<String, Object> sessionAttributes;
 
     public SessionRequestContent() {
         requestAttributes = new HashMap<>();

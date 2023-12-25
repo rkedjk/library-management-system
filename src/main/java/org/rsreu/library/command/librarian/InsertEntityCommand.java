@@ -35,11 +35,11 @@ public class InsertEntityCommand implements ActionCommand {
                     break;
             }
             // Entity inserted successfully
-            page = ConfigurationManager.getProperty("path.page.entityInserted"); // Redirect to success page
+            page = ConfigurationManager.getProperty("path.page.success"); // Redirect to success page
         } catch (SQLException e) {
             e.printStackTrace();
             // Handle SQL exception
-            page = ConfigurationManager.getProperty("path.page.entityInsertError"); // Redirect to error page
+            page = ConfigurationManager.getProperty("path.page.error"); // Redirect to error page
         }
 
         return page;

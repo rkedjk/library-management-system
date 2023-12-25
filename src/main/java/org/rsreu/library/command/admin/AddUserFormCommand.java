@@ -26,7 +26,7 @@ public class AddUserFormCommand implements ActionCommand {
         try {
             boolean isSuccess = userManagementAPI.insertUser(type, login, password, status, name);
             if (isSuccess) {
-                page = ConfigurationManager.getProperty("path.page.successQuery");
+                page = ConfigurationManager.getProperty("path.page.success");
             } else {
                 // Обработка неудачного добавления пользователя
                 page = ConfigurationManager.getProperty("path.page.error");
