@@ -35,6 +35,7 @@ public class LoginCommand implements ActionCommand {
                 session.setMaxInactiveInterval(sessionTimeoutSeconds);
                 session.setAttribute("user", user);
                 session.setAttribute("isAuthorized","True");
+                request.setAttribute("user", user);
                 switch (user.getType()) {
                     case "ADMIN":
                         page = ConfigurationManager.getProperty("path.page.admin_dashboard");
