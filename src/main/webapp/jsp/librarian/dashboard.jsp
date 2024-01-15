@@ -23,7 +23,11 @@
     }
 </style>
 <div class="container">
-    <h2>Welcome, <%= request.getSession().getAttribute("user.name") %></h2>
+<h2>Welcome,</h2>
+<c:set var="user" value="${requestScope.user}" />
+<c:if test="${user ne null}">
+    <p>${user.name}</p>
+</c:if>
     <h2>Librarian Dashboard</h2>
 
     <!-- Book Inventory Management -->

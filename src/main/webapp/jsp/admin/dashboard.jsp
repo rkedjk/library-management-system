@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Admin Dashboard</title>
@@ -8,7 +9,11 @@
 <body>
 <%@ include file="../header.jsp" %>
 <div class="container">
-    <h2>Welcome, <%= request.getSession().getAttribute("user.name") %></h2>
+    <h2>Welcome,</h2>
+    <c:set var="user" value="${requestScope.user}" />
+    <c:if test="${user ne null}">
+        <p>${user.name}</p>
+    </c:if>
     <h2>Admin Dashboard</h2>
 
     <form name="addUserForm" method="post" action="controller">
