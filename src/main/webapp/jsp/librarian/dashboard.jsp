@@ -23,6 +23,7 @@
     }
 </style>
 <div class="container">
+    <h2>Welcome, <%= request.getSession().getAttribute("user.name") %></h2>
     <h2>Librarian Dashboard</h2>
 
     <!-- Book Inventory Management -->

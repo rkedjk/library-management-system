@@ -9,6 +9,7 @@
 <%@ include file="../header.jsp" %>
 
 <div class="container">
+    <h2>Welcome, <%= request.getSession().getAttribute("user.name") %></h2>
     <h2>User Dashboard</h2>
 
     <form name="dashboardForm" method="post" action="controller">
