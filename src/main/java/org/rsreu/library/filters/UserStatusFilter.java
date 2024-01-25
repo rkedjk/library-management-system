@@ -23,9 +23,6 @@ public class UserStatusFilter implements Filter {
             // If user status is suspended, redirect or handle accordingly
 
             httpResponse.sendRedirect(httpRequest.getContextPath() + "/user-suspended.jsp");
-            if (httpRequest.getSession() != null) {
-                httpRequest.getSession().invalidate(); // Invalidate the session, clearing all session data
-            }
             return;
         }
 
