@@ -22,7 +22,7 @@ public class UserManagementAPI {
 
         // Check different search types and perform appropriate search
         switch (searchType.toLowerCase()) {
-            case "by id":
+            case "id":
                 // Search by ID
                 long userId = Long.parseLong(searchValue);
                 userList.add(userDAO.getUserById(userId));
@@ -35,11 +35,11 @@ public class UserManagementAPI {
                 // Search by type
                 userList.addAll(userDAO.getUsersByType(userType));
                 break;
-            case "userstatus":
+            case "status":
                 // Search by user status
                 userList.addAll(userDAO.getUsersByStatus(userStatus));
                 break;
-            case "type and userstatus":
+            case "typeandstatus":
                 // Search by type and user status
                 userList.addAll(userDAO.getUsersByTypeAndStatus(userType, userStatus));
                 break;
