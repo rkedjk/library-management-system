@@ -55,7 +55,7 @@ public class ReaderAPI {
             case "author":
                 bookCatalogList = bookCatalogDAO.getBooksByAuthor(searchValue);
                 break;
-            case "title":
+            case "name":
                 bookCatalogList = bookCatalogDAO.searchBooksByTitle(searchValue);
                 break;
         }

@@ -18,10 +18,10 @@
     <input type="text" id="readerId" name="readerId"><br><br>
 
     <label for="loanDate">Loan Date:</label>
-    <input type="text" id="loanDate" name="loanDate" placeholder="YYYY-MM-DD"><br><br>
+    <input type="date" id="loanDate" name="loanDate"><br><br>
 
     <label for="dueDate">Due Date:</label>
-    <input type="text" id="dueDate" name="dueDate" placeholder="YYYY-MM-DD"><br><br>
+    <input type="date" id="dueDate" name="dueDate"><br><br>
 
     <label for="status">Status:</label>
     <input type="text" id="status" name="status"><br><br>
