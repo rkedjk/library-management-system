@@ -9,23 +9,28 @@
 <h1>User Update</h1>
 <c:set var="user" value="${requestScope.user}" />
 
-<form name="adduserform" action="controller" method="post">
-    Type:
-    <select name="type">
-        <option value="ADMIN">ADMIN</option>
-        <option value="READER">READER</option>
-        <option value="LIBRARIAN">LIBRARIAN</option>
-    </select><br />
-    Login: <input type="text" name="login" /><br />
-    Password: <input type="password" name="password" /><br />
-    Status:
-    <select name="status">
-        <option value="ACTIVE">ACTIVE</option>
-        <option value="SUSPENDED">SUSPENDED</option>
-    </select><br />
-    Name: <input type="text" name="name" /><br />
-    <input type="submit" name="command" value="adduserform" />
-</form>
+<c:if test="${user ne null}">
+    <form name="userupdate" action="controller"  method="post">
+        <input type="hidden" name="userId" value="${user.id}" />
+        Login: <input type="text" name="login" value="${user.login}" /><br />
+        Password: <input type="password" name="password" value="${user.password}" /><br />
+        Status:
+        <select name="status">
+            <c:choose>
+                <c:when test="${user.status eq 'ACTIVE'}">
+                    <option value="ACTIVE" selected>ACTIVE</option>
+                    <option value="SUSPENDED">SUSPENDED</option>
+                </c:when>
+                <c:otherwise>
+                    <option value="ACTIVE">ACTIVE</option>
+                    <option value="SUSPENDED" selected>SUSPENDED</option>
+                </c:otherwise>
+            </c:choose>
+        </select><br />
+        Name: <input type="text" name="name" value="${user.name}" /><br />
+        <input type="submit" name="command" value="userupdate" />
+    </form>
+</c:if>
 
 </body>
 </html>
