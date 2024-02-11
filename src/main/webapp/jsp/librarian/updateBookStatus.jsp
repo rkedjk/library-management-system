@@ -12,12 +12,19 @@
 
     <!-- Input fields for updating book status -->
     <label for="status">Status:</label>
-    <input type="text" id="status" name="status"><br><br>
+    <select id="status" name="status">
+        <option value="LOST">LOST</option>
+        <option value="AVAILABLE">AVAILABLE</option>
+        <option value="ON_REPAIR">ON_REPAIR</option>
+        <option value="SCRAPPED">SCRAPPED</option>
+        <option value="RESERVED">RESERVED</option>
+    </select><br><br>
 
     <label for="inventoryId">Inventory ID:</label>
     <input type="text" id="inventoryId" name="inventoryId"><br><br>
 
     <input type="submit" value="Update Book Status">
 </form>
+
 </body>
 </html>

@@ -15,7 +15,8 @@
     <input type="text" id="location" name="location"><br><br>
 
     <label for="status">Status:</label>
-    <input type="text" id="status" name="status"><br><br>
+    <input type="text" id="status" name="status" value="AVAILABLE" readonly><br><br>
+
 
     <label for="bookId">Book ID:</label>
     <input type="text" id="bookId" name="bookId"><br><br>
