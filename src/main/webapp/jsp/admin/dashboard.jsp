@@ -49,14 +49,6 @@
         </div>
     </form>
 
-    <form name="removeUserForm" method="post" action="controller">
-        <div class="form-group col-md-3 offset-md-4 m-auto">
-            <input type="hidden" name="command" value="admindashboard"/>
-            <label for="deleteUserBtn">Delete User:</label>
-            <button type="submit" name="action" id="deleteUserBtn" value="deleteuser" class="btn btn-success">Delete</button><br>
-        </div>
-    </form>
-
     <button onclick="goBack()" class="btn btn-danger">Return to Previous Page</button>
 
     <script>
