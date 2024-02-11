@@ -9,16 +9,23 @@
 <h1>User Update</h1>
 <c:set var="user" value="${requestScope.user}" />
 
-<c:if test="${user ne null}">
-    <form name="userupdate" action="controller"  method="post">
-        <input type="hidden" name="userId" value="${user.id}" />
-        Type: <input type="text" name="type" value="${user.type}" /><br />
-        Login: <input type="text" name="login" value="${user.login}" /><br />
-        Password: <input type="password" name="password" value="${user.password}" /><br />
-        Status: <input type="text" name="status" value="${user.status}" /><br />
-        Name: <input type="text" name="name" value="${user.name}" /><br />
-        <input type="submit" name="command" value="userupdate" />
-    </form>
-</c:if>
+<form name="adduserform" action="controller" method="post">
+    Type:
+    <select name="type">
+        <option value="ADMIN">ADMIN</option>
+        <option value="READER">READER</option>
+        <option value="LIBRARIAN">LIBRARIAN</option>
+    </select><br />
+    Login: <input type="text" name="login" /><br />
+    Password: <input type="password" name="password" /><br />
+    Status:
+    <select name="status">
+        <option value="ACTIVE">ACTIVE</option>
+        <option value="SUSPENDED">SUSPENDED</option>
+    </select><br />
+    Name: <input type="text" name="name" /><br />
+    <input type="submit" name="command" value="adduserform" />
+</form>
+
 </body>
 </html>
