@@ -18,7 +18,7 @@
     <p>Status: ${user.status}</p>
     <p>Name: ${user.name}</p>
     <form name="deleteuserform" action="controller" method="post">
-        <input type="text" name="userId" value="${user.id}" />
+        <input type="hidden" name="userId" value="${user.id}" />
         <input type="submit" name="command" value="deleteuserform" />
     </form>
 </c:if>
