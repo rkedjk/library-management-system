@@ -27,10 +27,10 @@
     <input type="text" id="reason" name="reason" value="${penaltyData.reason}"><br><br>
 
     <label for="penaltyDate">Penalty Date:</label>
-    <input type="text" id="penaltyDate" name="penaltyDate" value="${penaltyData.penaltyDate}"><br><br>
+    <input type="date" id="penaltyDate" name="penaltyDate" value="${penaltyData.penaltyDate}"><br><br>
 
     <label for="expirationDate">Expiration Date:</label>
-    <input type="text" id="expirationDate" name="expirationDate" value="${penaltyData.expirationDate}"><br><br>
+    <input type="date" id="expirationDate" name="expirationDate" value="${penaltyData.expirationDate}"><br><br>
 
     <!-- Assuming librarian ID comes from session -->
     <input type="hidden" name="librarianId" value="${sessionScope.user.id}">
