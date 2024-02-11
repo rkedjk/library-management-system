@@ -29,7 +29,7 @@ public class SearchBooksCommand implements ActionCommand {
             request.setAttribute("error", "An error occurred while processing your request.");
             page = "path.page.error";
         }
-
+///
         return page;
     }
 }
