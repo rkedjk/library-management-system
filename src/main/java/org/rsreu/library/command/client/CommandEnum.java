@@ -26,7 +26,7 @@ public enum CommandEnum {
     SEARCHBOOKSINVENTORYCOMMAND(new SearchBooksInventoryCommand()),
     CREATELOANCOMMAND(new CreateLoanCommand()),
     DISPLAYBOOKDATACOMMAND(new DisplayBookDataCommand()),
-    INSERTPENALTYDATACOMMAND(new InsertPenaltyCommand()),
+    INSERTPENALTYCOMMAND(new InsertPenaltyCommand()),
     VIEWPENALTYDATACOMMAND(new ViewPenaltyDataCommand()),
     UPDATEBOOKDATACPMMAND(new UpdateBookDataCommand()),
     UPDATELOANDATACOMMAND(new UpdateLoanDataCommand()),
