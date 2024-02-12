@@ -13,7 +13,7 @@
     <thead>
     <tr>
         <th>ID</th>
-        <th>Name</th>
+        <th>Title</th>
         <th>Author</th>
         <th>Genre</th>
         <th>Publisher</th>
@@ -24,11 +24,11 @@
     <tbody>
     <c:forEach var="book" items="${bookList}">
         <tr>
-            <td>${book.id}</td>
-            <td>${book.name}</td>
-            <td>${book.author}</td>
-            <td>${book.genre}</td>
-            <td>${book.publisher}</td>
+            <td>${book.bookId}</td>
+            <td>${book.title}</td>
+            <td>${book.authorName}</td>
+            <td>${book.genreName}</td>
+            <td>${book.publisherName}</td>
             <td>${book.yearPublished}</td>
             <!-- Add other relevant columns -->
         </tr>
