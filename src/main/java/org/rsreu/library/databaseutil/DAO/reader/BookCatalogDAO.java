@@ -97,7 +97,7 @@ public class BookCatalogDAO {
     public List<BookCatalog> searchBooksByTitle(String title) throws SQLException {
         List<BookCatalog> bookList = new ArrayList<>();
         PreparedStatement statement = connection.prepareStatement(DatabaseManager.getProperty("query.reader.search_books_by_title"));
-        statement.setString(1, "%" + title + "%");
+        statement.setString(1, title);
         ResultSet resultSet = statement.executeQuery();
 
         while (resultSet.next()) {
