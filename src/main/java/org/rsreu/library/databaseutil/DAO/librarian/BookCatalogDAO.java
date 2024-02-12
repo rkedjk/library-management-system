@@ -169,7 +169,7 @@ public class BookCatalogDAO {
     public List<BookCatalog> getBooksByGenre(String genreName) throws SQLException {
         List<BookCatalog> bookList = new ArrayList<>();
         PreparedStatement statement = connection.prepareStatement(DatabaseManager.getProperty("query.librarian.get_books_by_genre"));
-        statement.setString(1, "%" + genreName + "%");
+        statement.setString(1, genreName);
         ResultSet resultSet = statement.executeQuery();
 
         while (resultSet.next()) {
@@ -196,7 +196,7 @@ public class BookCatalogDAO {
     public List<BookCatalog> getBooksByAuthor(String authorName) throws SQLException {
         List<BookCatalog> bookList = new ArrayList<>();
         PreparedStatement statement = connection.prepareStatement(DatabaseManager.getProperty("query.librarian.get_books_by_author"));
-        statement.setString(1, "%" + authorName + "%");
+        statement.setString(1,  authorName);
         ResultSet resultSet = statement.executeQuery();
 
         while (resultSet.next()) {
@@ -223,7 +223,7 @@ public class BookCatalogDAO {
     public List<BookCatalog> searchBooksByTitle(String title) throws SQLException {
         List<BookCatalog> bookList = new ArrayList<>();
         PreparedStatement statement = connection.prepareStatement(DatabaseManager.getProperty("query.librarian.search_books_by_title"));
-        statement.setString(1, "%" + title + "%");
+        statement.setString(1, title);
         ResultSet resultSet = statement.executeQuery();
 
         while (resultSet.next()) {
