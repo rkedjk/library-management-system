@@ -13,7 +13,7 @@
     <label for="searchType">Search By:</label>
     <select name="searchType" id="searchType">
         <option value="id">ID</option>
-        <option value="name">Name</option>
+        <option value="title">Title</option>
         <option value="genre">Genre</option>
         <option value="author">Author</option>
         <option value="publisher">Publisher</option>
