@@ -4,19 +4,17 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.rsreu.library.command.ActionCommand;
 import org.rsreu.library.databaseutil.api.reader.ReaderAPI;
-import org.rsreu.library.resource.ConfigurationManager;
 import org.rsreu.library.databaseutil.entity.Loan;
 import org.rsreu.library.databaseutil.entity.User;
 
-import java.io.Reader;
 import java.sql.Date;
 import java.sql.SQLException;
-import java.util.List;
+import java.time.LocalDate;
 
 public class ReservationCommand implements ActionCommand {
 
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) {
+    public String execute(HttpServletRequest request, HttpServletResponse response) throws SQLException {
         String page = null;
 
         // Retrieve necessary loan details from the request parameters
@@ -28,9 +26,9 @@ public class ReservationCommand implements ActionCommand {
 
         // Set other loan details
         String status = "RESERVED"; // Setting status as RESERVED
-        Date loanDate = new Date(System.currentTimeMillis()); // Current system date/time
+        Date loanDate = Date.valueOf(LocalDate.now()); // Current system date without time
         int daysToAdd = 7; // Due date is 7 days from loan date
-        Date dueDate = new Date(loanDate.getTime() + daysToAdd * 24 * 60 * 60 * 1000); // Calculate due date
+        Date dueDate = Date.valueOf(LocalDate.now().plusDays(daysToAdd)); // Calculate due date without time
 
         // Create a Loan object with the retrieved details
         Loan loan = new Loan();
@@ -40,9 +38,8 @@ public class ReservationCommand implements ActionCommand {
         loan.setDueDate(dueDate);
         loan.setStatus(status);
         // Set other necessary loan details
-
+        ReaderAPI readerAPI = new ReaderAPI();
         // Instantiate your ReaderAPI or service class
-        ReaderAPI readerAPI = new ReaderAPI(); // Adjust with the appropriate API or service class name
         try {
             boolean reservationSuccess = readerAPI.createReservation(loan);
             if (reservationSuccess) {
@@ -64,5 +61,3 @@ public class ReservationCommand implements ActionCommand {
         return page;
     }
 }
-
-
