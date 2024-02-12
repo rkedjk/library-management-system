@@ -18,6 +18,7 @@
         <th>Genre</th>
         <th>Publisher</th>
         <th>Year Published</th>
+        <th>Rating</th>
         <!-- Add other relevant column headers -->
     </tr>
     </thead>
@@ -30,6 +31,7 @@
             <td>${book.genreName}</td>
             <td>${book.publisherName}</td>
             <td>${book.yearPublished}</td>
+            <td>%{book.rating}</td>
             <!-- Add other relevant columns -->
         </tr>
     </c:forEach>

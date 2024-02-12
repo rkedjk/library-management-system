@@ -10,6 +10,7 @@ import org.rsreu.library.databaseutil.entity.BookCatalog;
 import org.rsreu.library.databaseutil.entity.BookInventory;
 import org.rsreu.library.databaseutil.entity.Loan;
 import org.rsreu.library.databaseutil.entity.Penalty;
+import org.rsreu.library.databaseutil.api.reader.ExtendedBook;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -179,3 +180,4 @@ public class ReaderAPI {
         return penaltyList;
     }
 }
+
