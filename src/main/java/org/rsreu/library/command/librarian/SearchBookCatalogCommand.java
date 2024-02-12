@@ -23,8 +23,8 @@ public class SearchBookCatalogCommand implements ActionCommand {
         BookCatalogAPI bookCatalogAPI = new BookCatalogAPI(); // Replace with your API or service class
 
         try {
-            List<Object> searchedBooks = bookCatalogAPI.searchBookCatalog(searchType, searchValue);
-            request.setAttribute("searchedBooks", searchedBooks);
+            List<Object> bookList = bookCatalogAPI.searchBookCatalog(searchType, searchValue);
+            request.setAttribute("bookList", bookList);
             page = ConfigurationManager.getProperty("path.page.searchBookCatalogResult"); // Redirect to result page
         } catch (SQLException e) {
             e.printStackTrace();
