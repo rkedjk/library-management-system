@@ -24,12 +24,12 @@
     <tbody>
     <c:forEach var="book" items="${bookList}">
         <tr>
-            <td>${book[0]}</td>
-            <td>${book[1]}</td>
-            <td>${book[3]}</td> <!-- Assuming index 3 for author -->
-            <td>${book[4]}</td> <!-- Assuming index 4 for genre -->
-            <td>${book[5]}</td> <!-- Assuming index 5 for publisher -->
-            <td>${book[2]}</td> <!-- Assuming index 2 for year published -->
+            <td>${book.id}</td>
+            <td>${book.name}</td>
+            <td>${book.author}</td>
+            <td>${book.genre}</td>
+            <td>${book.publisher}</td>
+            <td>${book.yearPublished}</td>
             <!-- Add other relevant columns -->
         </tr>
     </c:forEach>

@@ -1,32 +1,39 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Search Results - Book Catalog</title>
+    <title>Book List</title>
+    <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
-<h1>Search Results - Book Catalog</h1>
+<h2>Book List</h2>
+
 <table border="1">
+    <thead>
     <tr>
-        <th>Book ID</th>
-        <th>Title</th>
-        <th>Year Published</th>
+        <th>ID</th>
+        <th>Name</th>
         <th>Author</th>
         <th>Genre</th>
         <th>Publisher</th>
+        <th>Year Published</th>
+        <!-- Add other relevant column headers -->
     </tr>
-    <c:forEach items="${searchedBooks}" var="book">
+    </thead>
+    <tbody>
+    <c:forEach var="book" items="${bookList}">
         <tr>
-            <td>${book.bookId}</td>
-            <td>${book.title}</td>
+            <td>${book.id}</td>
+            <td>${book.name}</td>
+            <td>${book.author}</td>
+            <td>${book.genre}</td>
+            <td>${book.publisher}</td>
             <td>${book.yearPublished}</td>
-            <td>${book.authorName}</td>
-            <td>${book.genreName}</td>
-            <td>${book.publisherName}</td>
+            <!-- Add other relevant columns -->
         </tr>
     </c:forEach>
+    </tbody>
 </table>
 </body>
 </html>
