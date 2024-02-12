@@ -7,8 +7,8 @@
 <body>
 <h1>Create Reservation</h1>
 <form name="createreservation" action="controller" method="post"> <!-- Assuming 'reservation' is mapped to ReservationCommand -->
-    <label for="inventoryId">Inventory ID:</label>
-    <input type="text" id="inventoryId" name="inventoryId"><br><br>
+    <label for="Book Id">Book ID:</label>
+    <input type="text" id="Book Id" name="bookId"><br><br>
 
     <!-- You can add more input fields as needed for other details -->
 

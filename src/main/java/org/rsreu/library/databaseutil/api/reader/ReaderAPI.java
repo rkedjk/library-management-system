@@ -111,6 +111,26 @@ public class ReaderAPI {
         bookInventory.setStatus(status);
         bookInventoryDAO.insertBookInventory(bookInventory);
     }
+    public long reserve(Long bookId) throws SQLException {
+        // Получаем объект BookInventory по bookId
+        BookInventory bookInventory = bookInventoryDAO.getBookByBookId(bookId);
+
+        // Проверяем, был ли найден объект
+        if (bookInventory != null) {
+            // Вызываем метод updateInventoryStatusToReserved() с использованием inventoryId
+            boolean updateSuccess = bookInventoryDAO.updateInventoryStatusToReserved(bookInventory.getInventoryId());
+
+            // Проверяем успешность обновления и возвращаем bookId, если успешно, или -1 в противном случае
+            if (updateSuccess) {
+                return bookInventory.getInventoryId();
+            } else {
+                return -1;
+            }
+        } else {
+            // Если объект не был найден, возвращаем -1
+            return -1;
+        }
+    }
 
     public BookInventory getBookInventoryById(Long inventoryId) throws SQLException {
         return bookInventoryDAO.getBookInventoryById(inventoryId);

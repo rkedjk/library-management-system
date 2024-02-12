@@ -7,19 +7,22 @@ import org.rsreu.library.databaseutil.api.reader.ReaderAPI;
 import org.rsreu.library.databaseutil.entity.Loan;
 import org.rsreu.library.databaseutil.entity.User;
 import org.rsreu.library.resource.ConfigurationManager;
+
+import java.awt.print.Book;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
-
+import org.rsreu.library.databaseutil.DAO.reader.BookCatalogDAO;
+import org.rsreu.library.databaseutil.DAO.reader.BookInventoryDAO;
 public class ReservationCommand implements ActionCommand {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws SQLException {
         String page = null;
-
+        ReaderAPI readerAPI = new ReaderAPI();
         // Retrieve necessary loan details from the request parameters
-        Long inventoryId = Long.parseLong(request.getParameter("inventoryId")); // Assuming inventoryId is sent as a parameter
-
+        Long bookId = Long.parseLong(request.getParameter("bookId")); // Assuming inventoryId is sent as a parameter
+        Long inventoryId = readerAPI.reserve(bookId);
         // Retrieve user object from the session
         User user = (User) request.getSession().getAttribute("user");
         Long readerId = user.getId(); // Assuming user ID is stored in 'id' attribute of the User object in the session
@@ -38,7 +41,6 @@ public class ReservationCommand implements ActionCommand {
         loan.setDueDate(dueDate);
         loan.setStatus(status);
         // Set other necessary loan details
-        ReaderAPI readerAPI = new ReaderAPI();
         // Instantiate your ReaderAPI or service class
         try {
             boolean reservationSuccess = readerAPI.createReservation(loan);

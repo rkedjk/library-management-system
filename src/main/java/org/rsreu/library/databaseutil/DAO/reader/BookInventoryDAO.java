@@ -132,6 +132,24 @@ public class BookInventoryDAO {
 
         return bookList;
     }
+
+    public BookInventory getBookByBookId(Long bookId) throws SQLException {
+        BookInventory bookInventory = null;
+        PreparedStatement statement = connection.prepareStatement(DatabaseManager.getProperty("query.librarian.get_books_by_book_id"));
+        statement.setLong(1, bookId);
+        ResultSet resultSet = statement.executeQuery();
+
+        if (resultSet.next()) {
+            bookInventory = new BookInventory();
+            bookInventory.setInventoryId(resultSet.getLong("INVENTORY_ID"));
+            bookInventory.setBookId(resultSet.getLong("BOOK_ID"));
+            bookInventory.setLocation(resultSet.getString("LOCATION"));
+            bookInventory.setStatus(resultSet.getString("STATUS"));
+        }
+
+        return bookInventory;
+    }
+
     public List<BookInventory> getBooksOnRepair() throws SQLException {
         List<BookInventory> bookList = new ArrayList<>();
         PreparedStatement statement = connection.prepareStatement(DatabaseManager.getProperty("query.librarian.get_books_on_repair"));
