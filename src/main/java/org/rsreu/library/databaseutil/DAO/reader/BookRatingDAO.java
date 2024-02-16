@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BookRatingDAO {
-    private Connection connection;
+    private final Connection connection;
 
     public BookRatingDAO (Connection connection) {
         this.connection = connection;
