@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+import org.rsreu.library.resource.DatabaseManager;
 public class BookRatingDAO {
     private Connection connection;
 
@@ -19,7 +19,7 @@ public class BookRatingDAO {
 
     public int insertBookRating(BookRating bookRating) throws SQLException {
         int rowsAffected = 0;
-        String sql = "INSERT INTO BOOK_RATING (BOOK_ID, RATING) VALUES (?, ?)";
+        String sql = DatabaseManager.getProperty("query.bookrating.insert");
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setLong(1, bookRating.getBookId());
             statement.setDouble(2, bookRating.getRating());
@@ -30,7 +30,7 @@ public class BookRatingDAO {
 
     public int updateBookRating(BookRating bookRating) throws SQLException {
         int rowsAffected = 0;
-        String sql = "UPDATE BOOK_RATING SET RATING = ? WHERE BOOK_ID = ?";
+        String sql = DatabaseManager.getProperty("query.bookrating.update");
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setDouble(1, bookRating.getRating());
             statement.setLong(2, bookRating.getBookId());
@@ -41,7 +41,7 @@ public class BookRatingDAO {
 
     public int deleteBookRatingByBookId(Long bookId) throws SQLException {
         int rowsAffected = 0;
-        String sql = "DELETE FROM BOOK_RATING WHERE BOOK_ID = ?";
+        String sql = DatabaseManager.getProperty("query.bookrating.delete");
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setLong(1, bookId);
             rowsAffected = statement.executeUpdate();
@@ -51,7 +51,7 @@ public class BookRatingDAO {
 
     public int getRatingByBookId(Long bookId) throws SQLException {
         int rating = -1; // Default value if rating not found
-        String sql = "SELECT RATING FROM BOOK_RATING WHERE BOOK_ID = ?";
+        String sql = DatabaseManager.getProperty("query.bookrating.select");
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setLong(1, bookId);
             try (ResultSet resultSet = statement.executeQuery()) {
@@ -64,7 +64,7 @@ public class BookRatingDAO {
     }
 
     public boolean hasUserRatedBook(Long userId, Long bookId) throws SQLException {
-        String sql = "SELECT COUNT(*) FROM BOOK_SCORES WHERE USER_ID = ? AND BOOK_ID = ?";
+        String sql = DatabaseManager.getProperty("query.bookrating.has_user_rated");
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setLong(1, userId);
             statement.setLong(2, bookId);
@@ -80,7 +80,7 @@ public class BookRatingDAO {
 
     public boolean updateRating(Long userId, Long bookId, String rating) throws SQLException {
         // Update the rating in the BOOK_SCORES table
-        String updateSql = "UPDATE BOOK_SCORES SET SCORE = ? WHERE USER_ID = ? AND BOOK_ID = ?";
+        String updateSql = DatabaseManager.getProperty("query.bookrating.update_rating");
         try (PreparedStatement updateStatement = connection.prepareStatement(updateSql)) {
             updateStatement.setString(1, rating);
             updateStatement.setLong(2, userId);
@@ -95,7 +95,7 @@ public class BookRatingDAO {
     }
 
     public boolean insertRating(Long userId, Long bookId, String rating) throws SQLException {
-        String sql = "INSERT INTO BOOK_SCORES (USER_ID, BOOK_ID, SCORE) VALUES (?, ?, ?)";
+        String sql = DatabaseManager.getProperty("query.bookrating.insert_rating");
         try (PreparedStatement updateStatement = connection.prepareStatement(sql)) {
             updateStatement.setString(3, rating);
             updateStatement.setLong(1, userId);
@@ -111,7 +111,7 @@ public class BookRatingDAO {
 
     private boolean recalculatePositiveReviews(Long bookId) throws SQLException {
         // Count the number of positive ratings for the book
-        String countPositiveSql = "SELECT COUNT(*) FROM BOOK_SCORES WHERE BOOK_ID = ? AND SCORE = 'like'";
+        String countPositiveSql = DatabaseManager.getProperty("query.bookrating.count_positive");
         try (PreparedStatement countStatement = connection.prepareStatement(countPositiveSql)) {
             countStatement.setLong(1, bookId);
             try (ResultSet resultSet = countStatement.executeQuery()) {
@@ -122,7 +122,7 @@ public class BookRatingDAO {
                     // Calculate the percentage of positive reviews
                     double positivePercentage = (double) positiveCount / totalCount * 100.0;
                     // Update the positive percentage in the BOOK_SCORES table
-                    String updatePositivePercentageSql = "UPDATE BOOK_RATING SET RATING = ? WHERE BOOK_ID = ?";
+                    String updatePositivePercentageSql = DatabaseManager.getProperty("query.bookrating.update_positive_percentage");
                     try (PreparedStatement updateStatement = connection.prepareStatement(updatePositivePercentageSql)) {
                         updateStatement.setDouble(1, positivePercentage);
                         updateStatement.setLong(2, bookId);
@@ -137,7 +137,7 @@ public class BookRatingDAO {
 
     private int getTotalRatingsForBook(Long bookId) throws SQLException {
         // Count the total number of ratings for the book
-        String countTotalSql = "SELECT COUNT(*) FROM BOOK_SCORES WHERE BOOK_ID = ?";
+        String countTotalSql = DatabaseManager.getProperty("query.bookrating.count_total");
         try (PreparedStatement countStatement = connection.prepareStatement(countTotalSql)) {
             countStatement.setLong(1, bookId);
             try (ResultSet resultSet = countStatement.executeQuery()) {
