@@ -5,12 +5,13 @@ import org.rsreu.library.databaseutil.DAO.reader.LoanDAO;
 import org.rsreu.library.databaseutil.DAO.reader.PenaltyDAO;
 import org.rsreu.library.databaseutil.DAO.reader.BookInventoryDAO;
 import org.rsreu.library.databaseutil.DAO.reader.BookCatalogDAO;
+import org.rsreu.library.databaseutil.DAO.reader.BookRatingDAO;
 import org.rsreu.library.databaseutil.OracleConnectionManager;
 import org.rsreu.library.databaseutil.entity.BookCatalog;
 import org.rsreu.library.databaseutil.entity.BookInventory;
 import org.rsreu.library.databaseutil.entity.Loan;
 import org.rsreu.library.databaseutil.entity.Penalty;
-import org.rsreu.library.databaseutil.api.reader.ExtendedBook;
+import org.rsreu.library.databaseutil.entity.BookRating;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -23,6 +24,7 @@ public class ReaderAPI {
     private final BookValueDAO bookValueDAO;
     private final LoanDAO loanDAO;
     private final PenaltyDAO penaltyDAO;
+    private final BookRatingDAO bookRatingDAO;
 
     public ReaderAPI() {
         this.bookCatalogDAO = new BookCatalogDAO(OracleConnectionManager.getConnection());
@@ -30,6 +32,7 @@ public class ReaderAPI {
         this.bookValueDAO = new BookValueDAO(OracleConnectionManager.getConnection());
         this.loanDAO = new LoanDAO(OracleConnectionManager.getConnection());
         this.penaltyDAO = new PenaltyDAO(OracleConnectionManager.getConnection());
+        this.bookRatingDAO = new BookRatingDAO(OracleConnectionManager.getConnection());
     }
 
     public List<Object> searchBookCatalog(String searchType, String searchValue) throws SQLException {
@@ -65,6 +68,38 @@ public class ReaderAPI {
             convertedList.addAll(bookCatalogList);
         }
         return convertedList;
+    }
+
+    public List<BookCatalog> searchBookCatalogObject(String searchType, String searchValue) throws SQLException {
+        List<BookCatalog> bookCatalogList = null;
+        switch (searchType.toLowerCase()) {
+            case "id":
+                Long bookId = Long.parseLong(searchValue);
+                BookCatalog bookById = bookCatalogDAO.getBookCatalogById(bookId);
+                if (bookById != null) {
+                    bookCatalogList = new ArrayList<>();
+                    bookCatalogList.add(bookById);
+                }
+                break;
+            case "publisher":
+                bookCatalogList = bookCatalogDAO.getBooksByPublisher(searchValue);
+                break;
+            case "year_published":
+                int yearPublished = Integer.parseInt(searchValue);
+                bookCatalogList = bookCatalogDAO.getBooksByYearPublished(yearPublished);
+                break;
+            case "genre":
+                bookCatalogList = bookCatalogDAO.getBooksByGenre(searchValue);
+                break;
+            case "author":
+                bookCatalogList = bookCatalogDAO.getBooksByAuthor(searchValue);
+                break;
+            case "title":
+                bookCatalogList = bookCatalogDAO.searchBooksByTitle(searchValue);
+                break;
+        }
+
+        return bookCatalogList;
     }
 
     public List<Object> searchBooks(String searchType, String searchValue) throws SQLException {
@@ -179,5 +214,11 @@ public class ReaderAPI {
 
         return penaltyList;
     }
+    public int getRatingByBookId(Long bookId) throws SQLException {
+        int rating = -1; // Default value if rating not found
+        rating = bookRatingDAO.getRatingByBookId(bookId);
+        return rating;
+    }
+
 }
 
