@@ -97,9 +97,9 @@ public class BookRatingDAO {
     public boolean insertRating(Long userId, Long bookId, String rating) throws SQLException {
         String sql = "INSERT INTO BOOK_SCORES (USER_ID, BOOK_ID, SCORE) VALUES (?, ?, ?)";
         try (PreparedStatement updateStatement = connection.prepareStatement(sql)) {
-            updateStatement.setString(1, rating);
-            updateStatement.setLong(2, userId);
-            updateStatement.setLong(3, bookId);
+            updateStatement.setString(3, rating);
+            updateStatement.setLong(1, userId);
+            updateStatement.setLong(2, bookId);
             int rowsInserted = updateStatement.executeUpdate();
             if (rowsInserted > 0) {
                 // If the insertion is successful, recalculate the percentage of positive reviews
@@ -111,7 +111,7 @@ public class BookRatingDAO {
 
     private boolean recalculatePositiveReviews(Long bookId) throws SQLException {
         // Count the number of positive ratings for the book
-        String countPositiveSql = "SELECT COUNT(*) FROM BOOK_SCORES WHERE BOOK_ID = ? AND SCORE = 'positive'";
+        String countPositiveSql = "SELECT COUNT(*) FROM BOOK_SCORES WHERE BOOK_ID = ? AND SCORE = 'like'";
         try (PreparedStatement countStatement = connection.prepareStatement(countPositiveSql)) {
             countStatement.setLong(1, bookId);
             try (ResultSet resultSet = countStatement.executeQuery()) {
