@@ -80,7 +80,7 @@ public class BookRatingDAO {
 
     public boolean updateRating(Long userId, Long bookId, String rating) throws SQLException {
         // Update the rating in the BOOK_SCORES table
-        String updateSql = "UPDATE BOOK_SCORES SET RATING = ? WHERE USER_ID = ? AND BOOK_ID = ?";
+        String updateSql = "UPDATE BOOK_SCORES SET SCORE = ? WHERE USER_ID = ? AND BOOK_ID = ?";
         try (PreparedStatement updateStatement = connection.prepareStatement(updateSql)) {
             updateStatement.setString(1, rating);
             updateStatement.setLong(2, userId);
@@ -95,7 +95,7 @@ public class BookRatingDAO {
     }
 
     public boolean insertRating(Long userId, Long bookId, String rating) throws SQLException {
-        String sql = "INSERT INTO BOOK_SCORES (USER_ID, BOOK_ID, RATING) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO BOOK_SCORES (USER_ID, BOOK_ID, SCORE) VALUES (?, ?, ?)";
         try (PreparedStatement updateStatement = connection.prepareStatement(sql)) {
             updateStatement.setString(1, rating);
             updateStatement.setLong(2, userId);
@@ -111,7 +111,7 @@ public class BookRatingDAO {
 
     private boolean recalculatePositiveReviews(Long bookId) throws SQLException {
         // Count the number of positive ratings for the book
-        String countPositiveSql = "SELECT COUNT(*) FROM BOOK_SCORES WHERE BOOK_ID = ? AND RATING = 'positive'";
+        String countPositiveSql = "SELECT COUNT(*) FROM BOOK_SCORES WHERE BOOK_ID = ? AND SCORE = 'positive'";
         try (PreparedStatement countStatement = connection.prepareStatement(countPositiveSql)) {
             countStatement.setLong(1, bookId);
             try (ResultSet resultSet = countStatement.executeQuery()) {
@@ -122,7 +122,7 @@ public class BookRatingDAO {
                     // Calculate the percentage of positive reviews
                     double positivePercentage = (double) positiveCount / totalCount * 100.0;
                     // Update the positive percentage in the BOOK_SCORES table
-                    String updatePositivePercentageSql = "UPDATE BOOK_RATING SET POSITIVE_PERCENTAGE = ? WHERE BOOK_ID = ?";
+                    String updatePositivePercentageSql = "UPDATE BOOK_RATING SET RATING = ? WHERE BOOK_ID = ?";
                     try (PreparedStatement updateStatement = connection.prepareStatement(updatePositivePercentageSql)) {
                         updateStatement.setDouble(1, positivePercentage);
                         updateStatement.setLong(2, bookId);
