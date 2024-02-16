@@ -20,12 +20,13 @@
             <label>Rating:</label>
             <div>
                 <input type="hidden" name="command" value="ratebookform">
-                <button type="button" name="rating" value="like" class="btn btn-success">Like</button>
+                <button type="submit" name="rating" value="like" class="btn btn-success">Like</button>
                 <input type="hidden" name="command" value="ratebookform">
-                <button type="button" name="rating" value="dislike" class="btn btn-danger">Dislike</button>
+                <button type="submit" name="rating" value="dislike" class="btn btn-danger">Dislike</button>
             </div>
         </div>
-
+        <input type="hidden" name="command" value="ratebookform">
+        <button type="submit" name="action" value="confirm_rating" class="btn btn-primary">Confirm</button>
     </form>
 
     <button onclick="goBack()" class="btn btn-secondary">Cancel</button>
