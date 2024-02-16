@@ -35,7 +35,7 @@ public class SearchBooksCommand implements ActionCommand {
             }
 
             // Set the extended book list as a request attribute
-            request.setAttribute("extendedBookList", extendedBooks);
+            request.setAttribute("bookList", extendedBooks);
             page = ConfigurationManager.getProperty("path.page.viewBookList");
         } catch (SQLException e) {
             e.printStackTrace();
