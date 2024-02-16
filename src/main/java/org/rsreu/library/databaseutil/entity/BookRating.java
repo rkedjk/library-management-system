@@ -1,6 +1,6 @@
 package org.rsreu.library.databaseutil.entity;
 
-public class BookRating {
+public class BookRating extends BookCatalog {
     private Long bookId;
     private double rating;
 
