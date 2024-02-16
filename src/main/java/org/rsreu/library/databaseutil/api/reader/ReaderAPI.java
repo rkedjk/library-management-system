@@ -70,6 +70,24 @@ public class ReaderAPI {
         return convertedList;
     }
 
+    public boolean rateBook(Long userId, Long bookId, String rating) throws SQLException {
+        // Validate rating input (like or dislike)
+        if (!rating.equals("like") && !rating.equals("dislike")) {
+            // Invalid rating provided
+            return false;
+        }
+
+        // Check if the user has already rated the book
+        boolean userAlreadyRated = bookRatingDAO.hasUserRatedBook(userId, bookId);
+
+        // If the user has already rated the book, update the rating
+        if (userAlreadyRated) {
+            return bookRatingDAO.updateRating(userId, bookId, rating);
+        } else {
+            // If the user has not rated the book before, insert a new rating
+            return bookRatingDAO.insertRating(userId, bookId, rating);
+        }
+    }
     public List<BookCatalog> searchBookCatalogObject(String searchType, String searchValue) throws SQLException {
         List<BookCatalog> bookCatalogList = null;
         switch (searchType.toLowerCase()) {

@@ -68,6 +68,9 @@ public class ReaderDashboardCommand implements ActionCommand {
                         page = ConfigurationManager.getProperty("path.page.error");
                     }
                     break;
+                case "rate_book":
+                    page = ConfigurationManager.getProperty("path.page.rate_book_form");
+                    break;
                 default:
                     // Handle if action is not recognized
                     break;

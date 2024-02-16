@@ -46,6 +46,14 @@
         </div>
     </form>
 
+    <form name="rateBookForm" method="post" action="controller">
+        <div class="form-group col-md-3 offset-md-4 m-auto">
+            <input type="hidden" name="command" value="userdashboard">
+            <button type="submit" name="action" value="rate_book" class="btn btn-success">Rate Book</button><br>
+        </div>
+    </form>
+
+
     <!-- New form for redirecting to requestFinesById.jsp -->
     <form name="requestFinesForm" method="post" action="controller">
         <div class="form-group col-md-3 offset-md-4 m-auto">

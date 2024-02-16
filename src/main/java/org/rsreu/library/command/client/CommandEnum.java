@@ -10,6 +10,8 @@ import org.rsreu.library.command.reader.*;
 public enum CommandEnum {
     ADDUSERFORM(new AddUserFormCommand()),
     ADMINDASHBOARD(new AdminDashboardCommand()),
+
+    RATEBOOKFORM(new RateBookCommand()),
     CHANGEUSERSTATUSFORM(new ChangeUserStatusFormCommand()),
     DELETEUSERBYID(new DeleteUserByIdCommand()),
     DELETEUSERFORM(new DeleteUserFormCommand()),
