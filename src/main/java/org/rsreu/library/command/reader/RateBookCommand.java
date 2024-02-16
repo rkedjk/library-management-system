@@ -25,7 +25,7 @@ public class RateBookCommand implements ActionCommand {
                 boolean ratingSuccess = readerAPI.rateBook(user.getId(), bookId, rating);
 
                 if (ratingSuccess) {
-                    page = ConfigurationManager.getProperty("path.page.rate_book_success");
+                    page = ConfigurationManager.getProperty("path.page.success");
                 } else {
                     page = ConfigurationManager.getProperty("path.page.error");
                     request.setAttribute("error", "Failed to rate the book");
