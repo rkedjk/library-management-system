@@ -69,6 +69,8 @@ public class ReaderDashboardCommand implements ActionCommand {
                     }
                     break;
                 case "rate_book":
+                    Long userId = user.getId();
+                    request.setAttribute("user",userId);
                     page = ConfigurationManager.getProperty("path.page.rate_book_form");
                     break;
                 default:
