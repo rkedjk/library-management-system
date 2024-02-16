@@ -2,17 +2,13 @@ package org.rsreu.library.command.reader;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.rsreu.library.databaseutil.DAO.reader.BookRatingDAO;
 import org.rsreu.library.databaseutil.api.reader.ReaderAPI;
 import org.rsreu.library.command.ActionCommand;
 import org.rsreu.library.resource.ConfigurationManager;
-import org.rsreu.library.databaseutil.api.reader.BookService;
 import org.rsreu.library.databaseutil.entity.BookCatalog;
 import org.rsreu.library.databaseutil.entity.ExtendedBook;
 
 import java.util.ArrayList;
-import java.awt.print.Book;
-import java.math.BigInteger;
 import java.sql.SQLException;
 import java.util.List;
 

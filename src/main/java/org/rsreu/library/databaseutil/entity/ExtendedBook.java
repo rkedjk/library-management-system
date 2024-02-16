@@ -2,7 +2,7 @@ package org.rsreu.library.databaseutil.entity;
 
 import org.rsreu.library.databaseutil.entity.BookCatalog;
 
-public class ExtendedBook {
+public class ExtendedBook extends BookCatalog{
     private BookCatalog book;
     private int rating;
 
