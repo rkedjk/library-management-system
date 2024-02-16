@@ -3,7 +3,6 @@
 <html>
 <head>
     <title>Rate Book</title>
-    <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
 <%@ include file="../header.jsp" %>
@@ -24,7 +23,7 @@
                 <button type="button" name="rating" value="dislike" class="btn btn-danger">Dislike</button>
             </div>
         </div>
-
+        <input type="hidden" name="command" value="ratebookform">
         <button type="submit" name="action" value="confirm_rating" class="btn btn-primary">Confirm</button>
     </form>
 
